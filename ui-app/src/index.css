@@ -3,3 +3,79 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+@import "tailwindcss";
+
+/* ============================================
+   LIGHT MODE (default)
+   ============================================ */
+:root {
+  --color-background: #ffffff;
+  --color-background-secondary: #f6f8fa;
+
+  --color-foreground: #1f2328;
+  --color-foreground-muted: #57606a;
+  --color-foreground-subtle: #6e7781;
+
+  --color-border: #d0d7de;
+  --color-input-border: #d0d7de;
+
+  --color-primary: #0969da;
+  --color-primary-hover: #0550ae;
+
+  --color-link: #0969da;
+  --color-link-hover: #0550ae;
+
+  --color-button: #0969da;
+  --color-button-foreground: #ffffff;
+  --color-button-hover: #0550ae;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+.dark {
+  --color-background: #0d1117;
+  --color-background-secondary: #151b23;
+
+  --color-foreground: #f0f4f8;
+  --color-foreground-muted: #cccccc;
+  --color-foreground-subtle: #ccccccaf;
+
+  --color-border: rgba(104, 150, 229, 0.15);
+  --color-input-border: #30363d;
+
+  --color-primary: #58a6ff;
+  --color-primary-hover: #79c0ff;
+
+  --color-link: #58a6ff;
+  --color-link-hover: #79c0ff;
+
+  --color-button: #007bff;
+  --color-button-foreground: #ffffff;
+  --color-button-hover: #0056b3;
+}
+
+/* ============================================
+   Map variables into Tailwind's theme
+   ============================================ */
+@theme inline {
+  --color-background: var(--color-background);
+  --color-background-secondary: var(--color-background-secondary);
+
+  --color-foreground: var(--color-foreground);
+  --color-foreground-muted: var(--color-foreground-muted);
+  --color-foreground-subtle: var(--color-foreground-subtle);
+
+  --color-border: var(--color-border);
+  --color-input-border: var(--color-input-border);
+
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+
+  --color-link: var(--color-link);
+  --color-link-hover: var(--color-link-hover);
+
+  --color-button: var(--color-button);
+  --color-button-foreground: var(--color-button-foreground);
+  --color-button-hover: var(--color-button-hover);
+}
