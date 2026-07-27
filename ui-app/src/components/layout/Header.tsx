@@ -9,39 +9,36 @@ const NAV_LINKS = [
 
 export function Header() {
   return (
-    <div className="flex items-center justify-around p-4 bg-background text-foreground">
-      <div>
-        <h2>RIDI OTOKO</h2>
+    <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar-start">
+        <div className="dropdown pl-5 ">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+          </div>
+          <ul
+            tabIndex="-1"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
+          </ul>
+        </div>
+        <a className="btn btn-ghost text-xl">RIDI OTOKO</a>
       </div>
 
-      <nav>
-        <ul className="flex flex-row justify-between items-center gap-4">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a href={link.href}>{link.label}</a>
             </li>
           ))}
         </ul>
-      </nav>
+      </div>
 
-      <div className="flex justify-between items-center gap-4">
-       
-        <svg
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeWidth="2"
-            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-          />
-        </svg>
-
+      <div className="navbar-end gap-3 pr-5">
          <svg
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
@@ -73,25 +70,6 @@ export function Header() {
             d="m13 19 3.5-9 3.5 9m-6.125-2h5.25M3 7h7m0 0h2m-2 0c0 1.63-.793 3.926-2.239 5.655M7.5 6.818V5m.261 7.655C6.79 13.82 5.521 14.725 4 15m3.761-2.345L5 10m2.761 2.655L10.2 15"
           />
         </svg>
-
-        <button aria-label="Toggle menu" className="md:hidden">
-          <svg
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 7h14M5 12h14M5 17h14"
-            />
-          </svg>
-        </button>
       </div>
     </div>
   )
