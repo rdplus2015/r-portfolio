@@ -1,12 +1,14 @@
 
 
+import { Header
 
+ } from "./components/layout/Header"
 function App() {
   return (
-    <body>
-     <div className="bg-main-bg text-main border border-border">
-      <a className="text-link hover:text-link-hover">Lien</a>
-    </div>
+    <body className="bg-background-secondary">
+     <main>
+      <Header/>
+     </main>
     </body>
 
   )
