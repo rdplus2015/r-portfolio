@@ -5,7 +5,7 @@ import { Experience } from "../components/layout/Experience"
 import { Hero } from "../components/layout/Hero"
 import { ProjectCard, Projects } from "../components/layout/ProjectCard"
 import { Skills } from "../components/layout/Skills"
-
+import { Contact } from "../components/layout/Contact"
 export function Home() {
 
     return (
@@ -16,6 +16,7 @@ export function Home() {
             <Experience/>
             <Education/>
             <Projects/>
+            <Contact/>
         </main>
     )
 }
