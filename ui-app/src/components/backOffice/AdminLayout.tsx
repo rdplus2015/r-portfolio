@@ -19,6 +19,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         </nav>
 
         <div className="p-4">{children}</div>
+           <div className="p-4">{children}</div>
       </div>
 
       <AdminSidebar />
