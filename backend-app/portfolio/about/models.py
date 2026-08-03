@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# About model
 class About(models.Model):
     description = models.TextField()
     location = models.CharField(max_length=100)
@@ -41,7 +41,7 @@ class About(models.Model):
     def __str__(self):
         return "About Me"
 
-
+# Language model
 class Language(models.Model):
     about = models.ForeignKey(About, on_delete=models.CASCADE, related_name="languages")
     name = models.CharField(max_length=50)
@@ -53,3 +53,16 @@ class Language(models.Model):
 
     def __str__(self):
         return f"{self.name} — {self.level}"
+
+
+# Interest model
+class Interest(models.Model):
+    about = models.ForeignKey(About, on_delete=models.CASCADE, related_name="interests")
+    label = models.CharField(max_length=100)
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.label
