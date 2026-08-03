@@ -42,7 +42,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)  # Flag indicating if the user is a staff member (default: False)
     is_superuser = models.BooleanField(default=False)  # Flag indicating if the user is a superuser (default: False)
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
     # Attach the CustomUserManager to the CustomUser model for managing users
     objects = CustomUserManager()
 
