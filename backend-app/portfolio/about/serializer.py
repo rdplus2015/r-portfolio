@@ -16,11 +16,12 @@ class InterestSerializer(serializers.ModelSerializer):
 
 
 class AboutSerializer(serializers.ModelSerializer):
+    # Nested read-only lists: languages and interests linked to this About instance
     languages = LanguageSerializer(many=True, read_only=True)
     interests = InterestSerializer(many=True, read_only=True)
 
     class Meta:
         model = About
+        # About is a singleton, and its languages/interests are managed
+        # via their own endpoints (no write nested fields needed here)
         fields = ("id", "description", "location", "available", "resume_url", "languages", "interests")
-
-
