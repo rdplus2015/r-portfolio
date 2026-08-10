@@ -11,3 +11,5 @@ interface TagProps {
 export function Tag({ label }: TagProps) {
   return <div className="badge badge-primary">{label}</div>
 }
+
+
