@@ -97,7 +97,7 @@ export function ProjectCard({
   )
 }
 
-export function Projects() {
+export function ProjectsList() {
   return (
     <div className="flex flex-wrap gap-4">
       {PROJECTS_DATA.map((project) => (

@@ -38,7 +38,7 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export function Experience() {
   return (
-    <div>
+    <div id={"experience"}>
       {EXPERIENCE_DATA.map((exp) => (
         <div key={exp.title + exp.company} className="card w-96 bg-base-100 shadow-sm">
           <div className="card-body">

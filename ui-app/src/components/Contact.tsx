@@ -11,7 +11,7 @@ const CONTACT_DATA = {
 
 export function Contact() {
     return (
-        <section id="contact" className="contact-section">
+        <section id={"contact"} className="contact-section">
             <h2>{CONTACT_DATA.title}</h2>
             <p>{CONTACT_DATA.description}</p>
             <ul>

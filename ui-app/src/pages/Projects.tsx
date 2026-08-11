@@ -1,10 +1,12 @@
-import {Hero} from "../components/sections/Hero.tsx";
+import {Header} from "../components/sections/Header.tsx";
+import {Footer} from "../components/sections/Footer.tsx";
+import {ProjectsList} from "../components/ProjectCard.tsx";
 
 
 export function Projects() {
     return <main>
-        <Hero/>cd ui-app
-        npm install react-router-dom
-        <Projects/>
+        <Header />
+        <ProjectsList />
+        <Footer />
     </main>
 }

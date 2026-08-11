@@ -12,7 +12,7 @@ export function About() {
   }
 
   return (
-    <div>
+    <div id="about">
       <h1>{ABOUT_DATA.title}</h1>
       <p>{ABOUT_DATA.description}</p>
 

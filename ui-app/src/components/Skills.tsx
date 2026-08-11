@@ -13,7 +13,7 @@ const SKILLS = [
 
 export function Skills() {
   return (
-    <div>
+    <div  id={"skills"}>
       <div className="flex gap-2">
         {CATEGORIES.map((category) => (
           <button key={category} className="btn btn-outline">

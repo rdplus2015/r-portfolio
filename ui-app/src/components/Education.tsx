@@ -37,7 +37,7 @@ const EDUCATION_DATA: EducationItem[] = [
 
 export function Education() {
   return (
-    <div>
+    <div id={"education"}>
       {EDUCATION_DATA.map((item) => (
         <div key={item.title} className="card w-96 bg-base-100 shadow-sm">
           <div className="card-body">
