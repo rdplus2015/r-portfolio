@@ -8,25 +8,51 @@ export function Hero() {
         buttonTextOne: "View Projects",
         buttonTextTwo: "Get In Touch"
     }
+
     return (
         <div id={"Hero"} className="hero bg-base-100 min-h-screen">
-            <div className="hero-content text-center">
-                <div className="max-w-md"> 
+            <div className="hero-content flex gap-12 max-w-6xl">
 
-                <div className="flex gap-2 justify-center mb-4">
-                    <Tag label="Computer science student" />
-                    <Tag label="Full-stack developer" />
-                    <Tag label="AWS certified" />
-                    <Tag label="DevOps" />
+                <div className="flex-1 flex flex-col gap-6">
+                    <div className="flex gap-2 flex-wrap">
+                        <Tag label="Computer science student" />
+                        <Tag label="Full-stack developer" />
+                        <Tag label="AWS certified" />
+                        <Tag label="DevOps" />
+                    </div>
+
+                    <h1 className="text-6xl font-bold">{HERO_DATA.title}</h1>
+                    <p className="plabely-6 text-lg text-neutral-content">
+                        {HERO_DATA.description}
+                    </p>
+                    <div className="flex gap-4">
+                        <button className="btn btn-primary">{HERO_DATA.buttonTextOne}</button>
+                        <button className="btn btn-outline btn-primary">{HERO_DATA.buttonTextTwo}</button>
+                    </div>
                 </div>
-                
-                <h1 className="text-5xl font-bold">{HERO_DATA.title}</h1>
-                <p className="py-6">
-                    {HERO_DATA.description}
-                </p>
-                <button className="btn btn-primary">{HERO_DATA.buttonTextOne}</button>
-                <button className="btn btn-primary">{HERO_DATA.buttonTextTwo}</button>
+
+                <div className="flex-1 flex items-center justify-center">
+                    
+                        <div className="flex-1 relative flex items-center justify-center min-h-[400px]">
+                            <div className="w-64 h-64 rounded-full bg-base-200 border-2 border-primary shadow-[0_0_60px_-10px] shadow-primary flex items-center justify-center">
+                                <span className="text-5xl font-bold text-primary">{"</>"}</span>
+                            </div>
+
+                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute top-8 right-0 border border-base-300 hover:border-primary transition-colors duration-500">
+                                <h4 className="font-bold text-sm">Design</h4>
+                            </div>
+
+                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-20 left-0 border border-base-300 hover:border-primary transition-colors duration-500">
+                                <h4 className="font-bold text-sm">Code</h4>
+                            </div>
+
+                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-4 right-4 border border-base-300 hover:border-primary transition-colors duration-500">
+                                <h4 className="font-bold text-sm">Maintain</h4>
+                            </div>
+                        </div>
                 </div>
+
             </div>
         </div>
-    )}
+    )
+}
