@@ -15,7 +15,7 @@ const NAV_LINKS = [
 
 export function Header() {
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-200 shadow-sm">
             <div className="navbar-start">
                 {/* Mobile dropdown menu (visible below lg breakpoint) */}
                 <div className="dropdown pl-5">
@@ -47,7 +47,7 @@ export function Header() {
                 </div>
 
                 {/* Site name / logo */}
-                <a className="btn btn-ghost text-xl">RIDI OTOKO</a>
+                <Link className="btn btn-ghost text-xl" to={"/"}>RIDI OTOKO</Link>
             </div>
 
             {/* Desktop nav (visible from lg breakpoint up) */}

@@ -9,7 +9,7 @@ export function Hero() {
         buttonTextTwo: "Get In Touch"
     }
     return (
-        <div id={"Hero"} className="hero bg-base-200 min-h-screen">
+        <div id={"Hero"} className="hero bg-base-100 min-h-screen">
             <div className="hero-content text-center">
                 <div className="max-w-md"> 
 

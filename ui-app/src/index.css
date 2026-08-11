@@ -45,10 +45,10 @@
   default: true;
   prefersdark: true;
   color-scheme: "dark";
-  --color-base-100: #151B23;
-  --color-base-200: #0D1117;
+  --color-base-100: #0D1117 ;
+  --color-base-200: #151B23;
   --color-base-300: #20252e;
-  --color-base-content: #F0F4F8;
+  --color-base-content: #f0f6fc;
   --color-primary: #58A6FF;
   --color-primary-content: #132E53;
   --color-secondary: #141F35;
