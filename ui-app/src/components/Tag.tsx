@@ -8,7 +8,7 @@ interface TagProps {
 //   return <div className="badge badge-primary">{props.label}</div>
 // }
 
-// Destructured version (the one I'm keeping):
+// Destructured version 
 export function Tag({ label, color }: TagProps) {
   return (
     <div
