@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 interface ProjectCardProps {
   title: string
@@ -37,27 +38,27 @@ const PROJECTS_DATA: ProjectCardProps[] = [
 
 export function ProjectCard({
   title,
+  slug,
   description,
   frontendImage,
-  githubUrl,
-  liveUrl,
-  linkedinUrl,
   featured,
   tags,
   skills,
 }: ProjectCardProps) {
   return (
-    <div className="card w-96 bg-base-100 shadow-sm">
-      <figure>
-        <img src={frontendImage} alt={title} />
-      </figure>
+    <Link to={`/projects/${slug}`} className="card w-full sm:w-96 bg-base-200 shadow-sm overflow-hidden hover:shadow-md hover:shadow-primary transition-shadow duration-300">
+      {frontendImage && (
+        <figure className="bg-base-100 h-56">
+          <img src={frontendImage} alt={title} className="w-full h-full object-cover" />
+        </figure>
+      )}
 
       <div className="card-body">
-        {featured && <span className="badge badge-primary">Featured</span>}
+        {featured && <span className="badge badge-primary w-fit">Featured</span>}
 
         <h2 className="text-xl font-bold">{title}</h2>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
           {tags.map((tag) => (
             <span key={tag} className="badge">
               {tag}
@@ -74,35 +75,20 @@ export function ProjectCard({
             </span>
           ))}
         </div>
-
-        <div className="card-actions mt-4">
-          {githubUrl && (
-            <a href={githubUrl} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          )}
-          {liveUrl && (
-            <a href={liveUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              Live Demo
-            </a>
-          )}
-          {linkedinUrl && (
-            <a href={linkedinUrl} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          )}
-        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
 export function ProjectsList() {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-6">
       {PROJECTS_DATA.map((project) => (
         <ProjectCard key={project.slug} {...project} />
       ))}
     </div>
   )
 }
+
+export { PROJECTS_DATA }
+export type { ProjectCardProps }
