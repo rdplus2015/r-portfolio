@@ -38,15 +38,15 @@ export function Hero() {
                                 <span className="text-5xl font-bold text-primary">{"</>"}</span>
                             </div>
 
-                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute top-8 right-0 border border-base-300 hover:border-primary transition-colors duration-500">
+                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute top-8 right-0 border border-primary-content hover:border-primary transition-colors duration-500">
                                 <h4 className="font-bold text-sm">Design</h4>
                             </div>
 
-                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-20 left-0 border border-base-300 hover:border-primary transition-colors duration-500">
+                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-20 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
                                 <h4 className="font-bold text-sm">Code</h4>
                             </div>
 
-                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-4 right-4 border border-base-300 hover:border-primary transition-colors duration-500">
+                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-4 right-4 border border-primary-content hover:border-primary transition-colors duration-500">
                                 <h4 className="font-bold text-sm">Maintain</h4>
                             </div>
                         </div>
