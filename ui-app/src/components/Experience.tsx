@@ -38,37 +38,56 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
 
 export function Experience() {
   return (
-    <div id={"experience"}>
-      {EXPERIENCE_DATA.map((exp) => (
-        <div key={exp.title + exp.company} className="card w-96 bg-base-100 shadow-sm">
-          <div className="card-body">
-            <h2 className="text-xl font-bold">{exp.title}</h2>
+    <div id={"experience"} className="py-20 px-4 sm:px-6 bg-base-100 border-b border-base-200">
+      <div className="max-w-6xl mx-auto flex flex-col gap-6">
 
-            <div className="flex gap-2">
-              <span className="badge">{exp.company}</span>
-              <span className="badge">{exp.location}</span>
-              <span className="badge">{exp.type}</span>
-            </div>
+        <h2 className="text-[clamp(2.25rem,6vw,5.5rem)] font-bold leading-tight">
+          Experience
+        </h2>
 
-            <p>
-              {exp.startDate} - {exp.endDate}
-            </p>
-            <p>{exp.duration}</p>
+        <ul className="timeline timeline-vertical">
+          {EXPERIENCE_DATA.map((exp, index) => (
+            <li key={exp.title + exp.company}>
+              {index !== 0 && <hr className="bg-primary" />}
 
-            <p>{exp.description}</p>
-
-            {exp.technologies && (
-              <div className="flex gap-2 mt-2">
-                {exp.technologies.map((tech) => (
-                  <span key={tech} className="badge badge-outline">
-                    {tech}
-                  </span>
-                ))}
+              <div className="timeline-middle">
+                <div className="w-5 h-5 rounded-full bg-primary" />
               </div>
-            )}
-          </div>
-        </div>
-      ))}
+
+              <div className="timeline-end timeline-box bg-base-200 p-6 max-w-xl">
+                <p className="text-sm text-neutral-content">
+                  {exp.startDate} - {exp.endDate}
+                </p>
+
+                <h3 className="text-2xl font-bold mt-1">{exp.title}</h3>
+
+                <div className="flex gap-2 flex-wrap mt-2">
+                  <span className="badge badge-lg">{exp.company}</span>
+                  <span className="badge badge-lg">{exp.location}</span>
+                  <span className="badge badge-lg">{exp.type}</span>
+                </div>
+
+                <p className="text-base text-neutral-content mt-2">{exp.duration}</p>
+
+                <p className="text-base mt-3">{exp.description}</p>
+
+                {exp.technologies && (
+                  <div className="flex gap-2 flex-wrap mt-3">
+                    {exp.technologies.map((tech) => (
+                      <span key={tech} className="badge badge-outline badge-lg">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {index !== EXPERIENCE_DATA.length - 1 && <hr className="bg-primary" />}
+            </li>
+          ))}
+        </ul>
+
+      </div>
     </div>
   )
 }
