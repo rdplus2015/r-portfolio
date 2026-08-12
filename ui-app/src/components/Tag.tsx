@@ -9,7 +9,8 @@ interface TagProps {
 
 // Destructured version (the one I'm keeping):
 export function Tag({ label }: TagProps) {
-  return <div className="badge badge-md badge-secondary">{label}</div>
+  return <div className="badge badge-sm lg:badge-md badge-secondary">{label}</div>
 }
+
 
 

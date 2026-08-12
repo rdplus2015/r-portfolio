@@ -10,28 +10,39 @@ export function Hero() {
     }
 
     return (
-        <div id={"Hero"} className="hero bg-base-100 min-h-screen">
+        <div id={"Hero"} className="hero border-b border-base-200 bg-base-100 min-h-screen">
             <div className="hero-content flex gap-12 max-w-6xl">
 
-                <div className="flex-1 flex flex-col gap-6">
-                    <div className="flex gap-2 flex-wrap">
-                        <Tag label="Computer science student" />
-                        <Tag label="Full-stack developer" />
-                        <Tag label="AWS certified" />
-                        <Tag label="DevOps" />
-                    </div>
+                 {/* Text block: tags, title, description, CTA buttons */}
+                    <div className="flex-1 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+               
+                                   {/* Role/skill tags */}
+                    <div className="flex gap-2 flex-wrap justify-center lg:justify-start">
+                                       <Tag label="Computer science student" />
+                                       <Tag label="Full-stack developer" />
+                                       <Tag label="AWS certified" />
+                                       <Tag label="DevOps" />
+                                   </div>
+               
+                                   {/* Main title, fluid size via clamp() instead of fixed breakpoints */}
+                                   <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-bold">
+                                       {HERO_DATA.title}
+                                   </h1>
+               
+                                   {/* Short intro/description, also fluid but within a tighter range */}
+                                   <p className="text-[clamp(0.95rem,1.2vw,1.25rem)] text-neutral-content">
+                                       {HERO_DATA.description}
+                                   </p>
+               
+                                   {/* Call to action buttons */}
+                                   <div className="flex gap-4">
+                                       <button className="btn btn-primary">{HERO_DATA.buttonTextOne}</button>
+                                       <button className="btn btn-outline btn-primary">{HERO_DATA.buttonTextTwo}</button>
+                                   </div>
+                               </div>
+               
 
-                    <h1 className="text-6xl font-bold">{HERO_DATA.title}</h1>
-                    <p className="plabely-6 text-lg text-neutral-content">
-                        {HERO_DATA.description}
-                    </p>
-                    <div className="flex gap-4">
-                        <button className="btn btn-primary">{HERO_DATA.buttonTextOne}</button>
-                        <button className="btn btn-outline btn-primary">{HERO_DATA.buttonTextTwo}</button>
-                    </div>
-                </div>
-
-                <div className="flex-1 flex items-center justify-center">
+                <div className="flex-1 hidden lg:flex items-center justify-center">
                     
                         <div className="flex-1 relative flex items-center justify-center min-h-[400px]">
                             <div className="w-64 h-64 rounded-full bg-base-200 border-2 border-primary shadow-[0_0_60px_-10px] shadow-primary flex items-center justify-center">
@@ -51,8 +62,8 @@ export function Hero() {
                             </div>
                         </div>
                 </div>
-
             </div>
         </div>
+        
     )
 }

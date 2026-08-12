@@ -12,15 +12,16 @@ export function About() {
   }
 
   return (
-    <div id="about">
-      <h1>{ABOUT_DATA.title}</h1>
-      <p>{ABOUT_DATA.description}</p>
-
-      <div className="flex gap-2">
-        {ABOUT_DATA.languages.map((lang) => (
-          <Tag key={lang.name} label={`${lang.name} — ${lang.level}`} />
-        ))}
+      <div id="about" className="py-20 px-12 sm:px-6 bg-base-100 border-b border-base-200">
+          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+              <h1 className="text-[clamp(2.25rem,6vw,5.5rem)]  font-bold"> {ABOUT_DATA.title.toUpperCase()} </h1>
+              <p className="text-base sm:text-lg text-neutral-content leading-relaxed">{ABOUT_DATA.description}</p>
+              <div className="flex gap-2 flex-wrap">
+                  {ABOUT_DATA.languages.map((lang) => (
+                      <Tag key={lang.name} label={`${lang.name} — ${lang.level}`} />
+                  ))}
+              </div>
+          </div>
       </div>
-    </div>
   )
 }
