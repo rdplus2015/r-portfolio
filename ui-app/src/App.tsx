@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
 import { Home } from "./pages/Home"
 import { Projects } from "./pages/Projects"
+import { ProjectView } from "./components/ProjectView.tsx"
 import {AdminDashboard} from "./components/admin/Dashboard.tsx";
 
 // React Router intercepts link clicks and uses history.pushState internally
@@ -53,6 +54,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:slug" element={<ProjectView />} />
                 <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
         </>

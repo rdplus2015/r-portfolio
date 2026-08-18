@@ -41,7 +41,7 @@ const EDUCATION_DATA: EducationItem[] = [
 
 export function Education() {
   return (
-    <div id={"education"} className="py-20 px-7 sm:px-6 bg-base-200 border-b border-base-200">
+    <div id={"education"} className="py-30 px-7 sm:px-6 bg-base-200 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-16">
 
         <div className="flex flex-col gap-2">

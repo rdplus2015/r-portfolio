@@ -107,7 +107,7 @@ function ExperienceCard({ exp }: { exp: ExperienceItem }) {
 
 export function Experience() {
   return (
-    <div id={"experience"} className="py-20 px-7 sm:px-6 bg-base-100 border-b border-base-200">
+    <div id={"experience"} className="py-30 px-7 sm:px-6 bg-base-100 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-6">
 
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">

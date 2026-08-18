@@ -1,4 +1,10 @@
+// ProjectCard.tsx
 import { Link } from "react-router-dom"
+
+interface SkillRef {
+  id: number
+  name: string
+}
 
 interface ProjectCardProps {
   title: string
@@ -12,8 +18,8 @@ interface ProjectCardProps {
   liveUrl?: string
   linkedinUrl?: string
   featured?: boolean
-  tags: string[]
-  skills: string[]
+  tags: string // matches Django's single CharField, not an array
+  skills: SkillRef[] // matches Django's ManyToManyField to Skill
 }
 
 const PROJECTS_DATA: ProjectCardProps[] = [
@@ -31,8 +37,13 @@ const PROJECTS_DATA: ProjectCardProps[] = [
     liveUrl: "",
     linkedinUrl: "",
     featured: true,
-    tags: ["Personal Project"],
-    skills: ["React", "Django REST Framework", "PostgreSQL", "Tailwind CSS"],
+    tags: "Personal Project",
+    skills: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Django REST Framework" },
+      { id: 3, name: "PostgreSQL" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
   },
 ]
 
@@ -59,9 +70,9 @@ export function ProjectCard({
         <h2 className="text-xl font-bold">{title}</h2>
 
         <div className="flex gap-2 flex-wrap">
-          {tags.map((tag) => (
+          {tags.split(",").map((tag) => (
             <span key={tag} className="badge">
-              {tag}
+              {tag.trim()}
             </span>
           ))}
         </div>
@@ -70,8 +81,8 @@ export function ProjectCard({
 
         <div className="flex flex-wrap gap-2 mt-2">
           {skills.map((skill) => (
-            <span key={skill} className="badge badge-outline">
-              {skill}
+            <span key={skill.id} className="badge badge-outline">
+              {skill.name}
             </span>
           ))}
         </div>
@@ -91,4 +102,4 @@ export function ProjectsList() {
 }
 
 export { PROJECTS_DATA }
-export type { ProjectCardProps }
+export type { ProjectCardProps, SkillRef }

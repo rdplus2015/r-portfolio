@@ -1,3 +1,4 @@
+// ProjectView.tsx
 import { useParams, Link } from "react-router-dom"
 import { PROJECTS_DATA } from "../components/ProjectCard.tsx"
 
@@ -35,13 +36,13 @@ export function ProjectView() {
 
         <Link to="/projects" className="link text-primary w-fit">← Back to projects</Link>
 
-        <h1 className="text-[clamp(2.25rem,6vw,5.5rem)] font-bold leading-tight">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
           {title}
         </h1>
 
         <div className="flex gap-2 flex-wrap">
-          {tags.map((tag) => (
-            <span key={tag} className="badge">{tag}</span>
+          {tags.split(",").map((tag) => (
+            <span key={tag} className="badge">{tag.trim()}</span>
           ))}
         </div>
 
@@ -61,7 +62,7 @@ export function ProjectView() {
 
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
-            <span key={skill} className="badge badge-outline">{skill}</span>
+            <span key={skill.id} className="badge badge-outline">{skill.name}</span>
           ))}
         </div>
 
