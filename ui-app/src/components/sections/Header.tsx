@@ -1,9 +1,5 @@
 import { Link } from "react-router-dom"
 
-// Navigation links for the header.
-// "anchor" scrolls to a section on the Home page.
-// "page" navigates to a separate route.
-// "download" triggers a file download instead of navigation.
 const NAV_LINKS = [
     { label: "About", href: "/#about", type: "anchor" },
     { label: "Skills", href: "/#skills", type: "anchor" },
@@ -13,15 +9,45 @@ const NAV_LINKS = [
     { label: "Resume", href: "/resume.pdf", type: "download" },
 ]
 
+function ThemeToggle() {
+    return (
+        <label className="btn btn-ghost btn-circle swap swap-rotate">
+            <input type="checkbox" className="theme-controller" value="synthwave" />
+            <svg className="swap-off h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg className="swap-on h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+        </label>
+    )
+}
+
+
+function LanguageDropdown() {
+    return (
+        <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.5 15h5" />
+                </svg>
+            </div>
+            <ul tabIndex={-1} className="dropdown-content menu bg-base-200 rounded-box z-1 w-32 p-2 shadow-sm mt-3">
+                <li><a>English</a></li>
+                <li><a>Français</a></li>
+            </ul>
+        </div>
+    )
+}
+
 export function Header() {
     return (
-        <div className=" mt-10 pb-10  flex items-center justify-around bg-base-100 shadow-sm border-b border-base-200  px-5">
-            <div className="flex items-center gap-2">
-                
-                {/* Mobile dropdown menu (visible below lg breakpoint) */}
+        <>
+            {/* ===== MOBILE HEADER — visible below lg ===== */}
+            <div className="lg:hidden mt-10 pb-10 flex items-center justify-around bg-base-100 shadow-sm border-b border-base-200 px-5">
+
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        {/* Hamburger icon */}
+                    <div tabIndex={0} role="button" className="btn btn-ghost border-2 border-base-200">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
@@ -29,69 +55,59 @@ export function Header() {
 
                     <ul
                         tabIndex={-1}
-                        className="menu menu-md dropdown-content text-center font-bold bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow p-10"
+                        className="menu menu-md dropdown-content text-center font-bold bg-base-200 rounded-box z-1 mt-15 w-75 p-10 shadow-md shadow-primary"
                     >
                         {NAV_LINKS.map((link) =>
                             link.type === "download" ? (
                                 <li key={link.href}>
-                                    <a href={link.href} download className="hover:text-primary hover:bg-base-100 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] ">{link.label}</a>
+                                    <a href={link.href} download className="text-lg hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)]">{link.label}</a>
                                 </li>
                             ) : (
                                 <li key={link.href}>
-                                    <Link to={link.href} className="hover:text-primary hover:bg-base-100 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] ">{link.label}</Link>
+                                    <Link to={link.href} className="text-lg hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)]">{link.label}</Link>
                                 </li>
                             )
                         )}
+
+                        <div className="divider my-2"></div>
+
+                        <li>
+                            <Link to={"#"} className="text-lg hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)]">
+                                Langue (coming soon)
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 
-                {/* Site name / logo */}
-                <Link className=" text-xl font-bold hover:text-primary hover:bg-base-100 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)]  border-transparent" to={"/"}>RIDI OTOKO</Link>
+                <Link className="text-lg font-bold hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-transparent" to={"/"}>RIDI OTOKO</Link>
+
+                <ThemeToggle />
             </div>
 
-            {/* Desktop nav (visible from lg breakpoint up) */}
-            <div className="hidden lg:flex">
+            {/* ===== DESKTOP HEADER — visible from lg up ===== */}
+            <div className="hidden lg:flex pt-5 pb-5 items-center justify-around bg-base-200 shadow-sm border-b border-base-200 px-10">
+
+                <Link className="text-lg font-bold hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-transparent" to={"/"}>RIDI OTOKO</Link>
+
                 <ul className="menu menu-horizontal px-1">
                     {NAV_LINKS.map((link) =>
                         link.type === "download" ? (
                             <li key={link.href}>
-                                <a href={link.href} download className="hover:text-primary hover:bg-base-100 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-b-2 border-transparent hover:border-primary hover:rounded-none rounded-none">{link.label}</a>
+                                <a href={link.href} download className="hover:text-primary hover:bg-base-200 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-b-2 border-transparent hover:border-primary hover:rounded-none rounded-none">{link.label}</a>
                             </li>
                         ) : (
                             <li key={link.href}>
-                                <Link to={link.href} className="hover:text-primary hover:bg-base-100 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-b-2 border-transparent hover:border-primary hover:rounded-none rounded-none">{link.label}</Link>
+                                <Link to={link.href} className="hover:text-primary hover:bg-base-200 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-b-2 border-transparent hover:border-primary hover:rounded-none rounded-none">{link.label}</Link>
                             </li>
                         )
                     )}
                 </ul>
-            </div>
 
-            <div className="flex items-center gap-3">
-                <div className="dropdown dropdown-hover dropdown-left">
-                    {/* Dark/light mode toggle icon (not yet wired to a hook) */}
-                    <svg role="button" className="focus:outline-none"   tabIndex="0"  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M13 3a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0V3ZM6.343 4.929A1 1 0 0 0 4.93 6.343l1.414 1.414a1 1 0 0 0 1.414-1.414L6.343 4.929Zm12.728 1.414a1 1 0 0 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 1.414 1.414l1.414-1.414ZM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm-9 4a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2H3Zm16 0a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM7.757 17.657a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414Zm9.9-1.414a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM13 19a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Z" />
-                    </svg>
-                    <ul tabIndex="-1" class="dropdown-content menu bg-base-200 rounded-box z-1 w-30 p-2 shadow-sm">
-                        <li>
-                            <Link to={"#"} className="hover:text-primary hover:bg-base-200 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)]">coming soon</Link>
-                        </li>
-                    </ul>
-                </div>
-
-                <div className="dropdown dropdown-hover dropdown-right">
-                    {/* Search icon (not yet wired to any behavior) */}
-                    <svg role="button" className="focus:outline-none"   tabIndex="0"  aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m13 19 3.5-9 3.5 9m-6.125-2h5.25M3 7h7m0 0h2m-2 0c0 1.63-.793 3.926-2.239 5.655M7.5 6.818V5m.261 7.655C6.79 13.82 5.521 14.725 4 15m3.761-2.345L5 10m2.761 2.655L10.2 15" />
-                    </svg>
-                    <ul tabIndex="-1" class="dropdown-content menu bg-base-200 rounded-box z-1 w-30 p-2 shadow-sm">
-                        <li>
-                            <Link to={"#"} className="hover:text-primary hover:bg-base-200 border-primary-1  transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)]">coming soon</Link>
-                        </li>
-                    </ul>
-                </div>
-                
+               <div className="flex items-center gap-2">
+                   <LanguageDropdown />
+                   <ThemeToggle />
+               </div>
             </div>
-        </div>
+        </>
     )
 }
