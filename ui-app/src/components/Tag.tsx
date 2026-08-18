@@ -12,7 +12,7 @@ interface TagProps {
 export function Tag({ label, color }: TagProps) {
   return (
     <div
-      className="badge badge-sm lg:badge-lg badge-secondary gap-2 border border-transparent transition-colors duration-300"
+      className="badge badge-lg lg:badge-lg badge-secondary gap-2 border border-transparent transition-colors duration-300"
       style={{ borderColor: "transparent" }}
       onMouseEnter={(e) => color && (e.currentTarget.style.borderColor = color)}
       onMouseLeave={(e) => (e.currentTarget.style.borderColor = "transparent")}

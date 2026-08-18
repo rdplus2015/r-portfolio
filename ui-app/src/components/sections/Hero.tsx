@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Tag } from "../Tag.tsx"
 
 export function Hero() {
@@ -10,60 +11,52 @@ export function Hero() {
     }
 
     return (
-        <div id={"Hero"} className="hero border-b border-base-200 bg-base-100 min-h-screen">
-            <div className="hero-content flex gap-12 max-w-6xl">
+        <div id={"Hero"} className="border-b border-base-200 bg-base-100 py-25 lg:py-30">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto px-4 sm:px-6 items-center">
 
-                 {/* Text block: tags, title, description, CTA buttons */}
-                    <div className="flex-1 flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
-               
-                                   {/* Role/skill tags */}
+                <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
+
                     <div className="flex gap-2 flex-wrap justify-center lg:justify-start">
-                                       <Tag label="Computer science student" />
-                                       <Tag label="Full-stack developer" />
-                                       <Tag label="AWS certified" />
-                                       <Tag label="DevOps" />
-                                   </div>
-               
-                                   {/* Main title, fluid size via clamp() instead of fixed breakpoints */}
-                                   <h1 className="text-[clamp(2rem,5vw,4.5rem)] font-bold">
-                                       {HERO_DATA.title}
-                                   </h1>
-               
-                                   {/* Short intro/description, also fluid but within a tighter range */}
-                                   <p className="text-[clamp(0.95rem,1.2vw,1.25rem)] text-neutral-content">
-                                       {HERO_DATA.description}
-                                   </p>
-               
-                                   {/* Call to action buttons */}
-                                   <div className="flex gap-4">
-                                       <button className="btn btn-primary">{HERO_DATA.buttonTextOne}</button>
-                                       <button className="btn btn-outline btn-primary">{HERO_DATA.buttonTextTwo}</button>
-                                   </div>
-                               </div>
-               
+                        <Tag label="Computer science student" />
+                        <Tag label="Full-stack developer" />
+                        <Tag label="AWS certified" />
+                        <Tag label="DevOps" />
+                    </div>
 
-                <div className="flex-1 hidden lg:flex items-center justify-center">
-                    
-                        <div className="flex-1 relative flex items-center justify-center min-h-[400px]">
-                            <div className="w-64 h-64 rounded-full bg-base-200 border-2 border-primary shadow-[0_0_60px_-10px] shadow-primary flex items-center justify-center">
-                                <span className="text-5xl font-bold text-primary">{"</>"}</span>
-                            </div>
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+                        {HERO_DATA.title}
+                    </h1>
 
-                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute top-8 right-0 border border-primary-content hover:border-primary transition-colors duration-500">
-                                <h4 className="font-bold text-sm">Design</h4>
-                            </div>
+                    <p className="text-base sm:text-lg text-neutral-content max-w-md lg:max-w-none">
+                        {HERO_DATA.description}
+                    </p>
 
-                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-20 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
-                                <h4 className="font-bold text-sm">Code</h4>
-                            </div>
-
-                            <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-4 right-4 border border-primary-content hover:border-primary transition-colors duration-500">
-                                <h4 className="font-bold text-sm">Maintain</h4>
-                            </div>
-                        </div>
+                    {/* Call to action buttons — now real navigation links */}
+                    <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
+                        <Link to="/projects" className="btn btn-primary">{HERO_DATA.buttonTextOne}</Link>
+                        <Link to="/#contact" className="btn btn-outline btn-primary">{HERO_DATA.buttonTextTwo}</Link>
+                    </div>
                 </div>
+
+                <div className="hidden lg:flex relative items-center justify-center min-h-[400px]">
+                    <div className="w-64 h-64 rounded-full bg-base-200 border-2 border-primary shadow-[0_0_60px_-10px] shadow-primary flex items-center justify-center">
+                        <span className="text-5xl font-bold text-primary">{"</>"}</span>
+                    </div>
+
+                    <div className="card bg-base-200 shadow-md px-8 py-2 absolute top-8 right-0 border border-primary-content hover:border-primary transition-colors duration-500">
+                        <h4 className="font-bold text-sm">Design</h4>
+                    </div>
+
+                    <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-20 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
+                        <h4 className="font-bold text-sm">Code</h4>
+                    </div>
+
+                    <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-4 right-4 border border-primary-content hover:border-primary transition-colors duration-500">
+                        <h4 className="font-bold text-sm">Maintain</h4>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
     )
 }
