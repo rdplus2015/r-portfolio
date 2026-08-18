@@ -1,3 +1,10 @@
+// ProjectCard.tsx
+import { Link } from "react-router-dom"
+
+interface SkillRef {
+  id: number
+  name: string
+}
 
 interface ProjectCardProps {
   title: string
@@ -11,8 +18,8 @@ interface ProjectCardProps {
   liveUrl?: string
   linkedinUrl?: string
   featured?: boolean
-  tags: string[]
-  skills: string[]
+  tags: string // matches Django's single CharField, not an array
+  skills: SkillRef[] // matches Django's ManyToManyField to Skill
 }
 
 const PROJECTS_DATA: ProjectCardProps[] = [
@@ -30,37 +37,42 @@ const PROJECTS_DATA: ProjectCardProps[] = [
     liveUrl: "",
     linkedinUrl: "",
     featured: true,
-    tags: ["Personal Project"],
-    skills: ["React", "Django REST Framework", "PostgreSQL", "Tailwind CSS"],
+    tags: "Personal Project",
+    skills: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Django REST Framework" },
+      { id: 3, name: "PostgreSQL" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
   },
 ]
 
 export function ProjectCard({
   title,
+  slug,
   description,
   frontendImage,
-  githubUrl,
-  liveUrl,
-  linkedinUrl,
   featured,
   tags,
   skills,
 }: ProjectCardProps) {
   return (
-    <div className="card w-96 bg-base-100 shadow-sm">
-      <figure>
-        <img src={frontendImage} alt={title} />
-      </figure>
+    <Link to={`/projects/${slug}`} className="card w-full sm:w-96 bg-base-200 shadow-sm overflow-hidden hover:shadow-md hover:shadow-primary transition-shadow duration-300">
+      {frontendImage && (
+        <figure className="bg-base-100 h-56">
+          <img src={frontendImage} alt={title} className="w-full h-full object-cover" />
+        </figure>
+      )}
 
       <div className="card-body">
-        {featured && <span className="badge badge-primary">Featured</span>}
+        {featured && <span className="badge badge-primary w-fit">Featured</span>}
 
         <h2 className="text-xl font-bold">{title}</h2>
 
-        <div className="flex gap-2">
-          {tags.map((tag) => (
+        <div className="flex gap-2 flex-wrap">
+          {tags.split(",").map((tag) => (
             <span key={tag} className="badge">
-              {tag}
+              {tag.trim()}
             </span>
           ))}
         </div>
@@ -69,40 +81,25 @@ export function ProjectCard({
 
         <div className="flex flex-wrap gap-2 mt-2">
           {skills.map((skill) => (
-            <span key={skill} className="badge badge-outline">
-              {skill}
+            <span key={skill.id} className="badge badge-outline">
+              {skill.name}
             </span>
           ))}
         </div>
-
-        <div className="card-actions mt-4">
-          {githubUrl && (
-            <a href={githubUrl} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-          )}
-          {liveUrl && (
-            <a href={liveUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              Live Demo
-            </a>
-          )}
-          {linkedinUrl && (
-            <a href={linkedinUrl} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          )}
-        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
-export function Projects() {
+export function ProjectsList() {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-6">
       {PROJECTS_DATA.map((project) => (
         <ProjectCard key={project.slug} {...project} />
       ))}
     </div>
   )
 }
+
+export { PROJECTS_DATA }
+export type { ProjectCardProps, SkillRef }
