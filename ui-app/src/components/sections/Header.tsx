@@ -79,7 +79,7 @@ export function Header() {
                     </ul>
                 </div>
 
-                <Link className="text-lg font-bold hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-transparent" to={"/"}>RIDI OTOKO</Link>
+                <Link className="text-lg font-bold hover:text-primary hover:bg-base-200 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-transparent" to={"/"}>RIDI OTOKO</Link>
 
                 <ThemeToggle />
             </div>
@@ -87,7 +87,7 @@ export function Header() {
             {/* ===== DESKTOP HEADER — visible from lg up ===== */}
             <div className="hidden lg:flex pt-5 pb-5 items-center justify-around bg-base-200 shadow-sm border-b border-base-200 px-10">
 
-                <Link className="text-lg font-bold hover:text-primary hover:bg-base-100 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-transparent" to={"/"}>RIDI OTOKO</Link>
+                <Link className="text-lg font-bold hover:text-primary hover:bg-base-200 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-transparent" to={"/"}>RIDI OTOKO</Link>
 
                 <ul className="menu menu-horizontal px-1">
                     {NAV_LINKS.map((link) =>

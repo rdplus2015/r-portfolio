@@ -12,7 +12,7 @@ export function Hero() {
 
     return (
         <div id={"Hero"} className="border-b border-base-200 bg-base-100 py-25 lg:py-30">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto px-4 sm:px-6 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-50  max-w-6xl mx-auto px-4 sm:px-0 items-center">
 
                 <div className="flex flex-col gap-6 text-center lg:text-left items-center lg:items-start">
 
@@ -47,7 +47,11 @@ export function Hero() {
                         <h4 className="font-bold text-sm">Design</h4>
                     </div>
 
-                    <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-20 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
+                    <div className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-3 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
+                        <h4 className="font-bold text-sm">Deploy</h4>
+                    </div>
+
+                    <div className="card bg-base-200 shadow-md px-8 py-2 absolute top-9 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
                         <h4 className="font-bold text-sm">Code</h4>
                     </div>
 
