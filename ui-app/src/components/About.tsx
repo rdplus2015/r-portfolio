@@ -15,7 +15,7 @@ export function About() {
   }
 
   return (
-      <div id="about" className="py-20 px-10 sm:px-6 bg-base-200 border-b border-base-200">
+      <div id="about" className="py-20 px-7 sm:px-6 bg-base-200 border-b border-base-200">
           <div className="max-w-6xl mx-auto flex flex-col gap-4">
 
               {/* Location — SVG pin + text */}

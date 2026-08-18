@@ -1,3 +1,8 @@
+interface Technology {
+  id: number
+  name: string
+}
+
 interface ExperienceItem {
   title: string
   company: string
@@ -5,9 +10,9 @@ interface ExperienceItem {
   type: string
   startDate: string
   endDate: string
-  duration: string
   description: string
-  technologies?: string[]
+  companyLogo?: string
+  technologies?: Technology[]
 }
 
 const EXPERIENCE_DATA: ExperienceItem[] = [
@@ -16,9 +21,8 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     company: "Shopify",
     location: "Montreal, Canada",
     type: "Internship",
-    startDate: "May 2025",
-    endDate: "August 2025",
-    duration: "4 months",
+    startDate: "2025-05-01",
+    endDate: "2025-08-31",
     description:
       "Secured an internship for Summer 2025, with the Streaming platform team (Data Streaming Infrastructure).",
   },
@@ -27,65 +31,113 @@ const EXPERIENCE_DATA: ExperienceItem[] = [
     company: "Concordia Security Centre",
     location: "Montreal, Canada",
     type: "Contract",
-    startDate: "October 2023",
-    endDate: "September 2024",
-    duration: "11 months and 6 days",
+    startDate: "2023-10-01",
+    endDate: "2024-09-07",
     description:
       "Built an Endpoint Detection & Response GUI using React, TypeScript, Axios, and Bootstrap, providing continuous endpoint monitoring and analytics for 300,000+ endpoints.",
-    technologies: ["TypeScript", "React", "Bootstrap"],
+    technologies: [
+      { id: 1, name: "TypeScript" },
+      { id: 2, name: "React" },
+      { id: 3, name: "Bootstrap" },
+    ],
   },
 ]
 
+function formatDuration(startDate: string, endDate: string): string {
+  const start = new Date(startDate)
+  const end = new Date(endDate)
+
+  let months =
+    (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth())
+  const days = end.getDate() - start.getDate()
+
+  if (days < 0) months -= 1
+
+  const years = Math.floor(months / 12)
+  const remainingMonths = months % 12
+
+  const parts: string[] = []
+  if (years > 0) parts.push(`${years} year${years > 1 ? "s" : ""}`)
+  if (remainingMonths > 0) parts.push(`${remainingMonths} month${remainingMonths > 1 ? "s" : ""}`)
+
+  return parts.length > 0 ? parts.join(" and ") : "Less than a month"
+}
+
+function formatDate(dateString: string): string {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("en-US", { month: "long", year: "numeric" })
+}
+
+function ExperienceCard({ exp }: { exp: ExperienceItem }) {
+  return (
+    <div className="bg-base-200 p-6 rounded-box w-full">
+      <p className="text-sm text-neutral-content">
+        {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
+      </p>
+
+      <h3 className="text-2xl font-bold mt-1">{exp.title}</h3>
+
+      <div className="flex gap-2 flex-wrap mt-2 items-center">
+        {exp.companyLogo && (
+          <img src={exp.companyLogo} alt={exp.company} className="w-6 h-6 rounded-full object-contain" />
+        )}
+        <span className="badge badge-lg">{exp.company}</span>
+        <span className="badge badge-lg">{exp.location}</span>
+        <span className="badge badge-lg">{exp.type}</span>
+      </div>
+
+      <p className="text-base text-neutral-content mt-2">
+        {formatDuration(exp.startDate, exp.endDate)}
+      </p>
+
+      <p className="text-base mt-3">{exp.description}</p>
+
+      {exp.technologies && (
+        <div className="flex gap-2 flex-wrap mt-3">
+          {exp.technologies.map((tech) => (
+            <span key={tech.id} className="badge badge-outline badge-lg">
+              {tech.name}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function Experience() {
   return (
-    <div id={"experience"} className="py-20 px-4 sm:px-6 bg-base-100 border-b border-base-200">
+    <div id={"experience"} className="py-20 px-7 sm:px-6 bg-base-100 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-6">
 
-        <h2 className="text-[clamp(2.25rem,6vw,5.5rem)] font-bold leading-tight">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
           Experience
         </h2>
 
-        <ul className="timeline timeline-vertical">
+        <div className="relative flex flex-col gap-10">
+          {/* Vertical line down the center on desktop, hidden on mobile */}
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary -translate-x-1/2" />
+
           {EXPERIENCE_DATA.map((exp, index) => (
-            <li key={exp.title + exp.company}>
-              {index !== 0 && <hr className="bg-primary" />}
-
-              <div className="timeline-middle">
-                <div className="w-5 h-5 rounded-full bg-primary" />
+            <div
+              key={exp.title + exp.company}
+              className={`relative flex flex-col lg:flex-row items-center gap-6 ${
+                index % 2 === 1 ? "lg:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Card */}
+              <div className="w-full lg:w-1/2">
+                <ExperienceCard exp={exp} />
               </div>
 
-              <div className="timeline-end timeline-box bg-base-200 p-6 max-w-xl">
-                <p className="text-sm text-neutral-content">
-                  {exp.startDate} - {exp.endDate}
-                </p>
+              {/* Center dot — desktop only */}
+              <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-primary z-10" />
 
-                <h3 className="text-2xl font-bold mt-1">{exp.title}</h3>
-
-                <div className="flex gap-2 flex-wrap mt-2">
-                  <span className="badge badge-lg">{exp.company}</span>
-                  <span className="badge badge-lg">{exp.location}</span>
-                  <span className="badge badge-lg">{exp.type}</span>
-                </div>
-
-                <p className="text-base text-neutral-content mt-2">{exp.duration}</p>
-
-                <p className="text-base mt-3">{exp.description}</p>
-
-                {exp.technologies && (
-                  <div className="flex gap-2 flex-wrap mt-3">
-                    {exp.technologies.map((tech) => (
-                      <span key={tech} className="badge badge-outline badge-lg">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {index !== EXPERIENCE_DATA.length - 1 && <hr className="bg-primary" />}
-            </li>
+              {/* Spacer to balance the other side */}
+              <div className="hidden lg:block w-1/2" />
+            </div>
           ))}
-        </ul>
+        </div>
 
       </div>
     </div>

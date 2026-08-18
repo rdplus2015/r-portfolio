@@ -53,7 +53,7 @@ export function Skills() {
   }, [activeCategory])
 
   return (
-    <div id={"skills"} className="py-35 px-10 sm:px-6 bg-base-100 border-b border-base-200">
+    <div id={"skills"} className="py-35 px-7 sm:px-6 bg-base-100 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-10">
 
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
