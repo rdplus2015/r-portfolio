@@ -27,7 +27,7 @@ export function Hero() {
                         {HERO_DATA.title}
                     </h1>
 
-                    <p className="text-base sm:text-lg text-neutral-content max-w-md lg:max-w-none">
+                    <p className=" text-lg sm:text-xl text-neutral-content max-w-md lg:max-w-none">
                         {HERO_DATA.description}
                     </p>
 

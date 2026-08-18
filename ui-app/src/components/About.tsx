@@ -15,8 +15,8 @@ export function About() {
   }
 
   return (
-      <div id="about" className="py-20 px-12 sm:px-6 bg-base-200 border-b border-base-200">
-          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+      <div id="about" className="py-20 px-10 sm:px-6 bg-base-200 border-b border-base-200">
+          <div className="max-w-6xl mx-auto flex flex-col gap-4">
 
               {/* Location — SVG pin + text */}
               <div className="flex items-center gap-2 text-neutral-content">
@@ -24,7 +24,7 @@ export function About() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <span className="text-sm">{ABOUT_DATA.location}</span>
+                  <span className="text-md">{ABOUT_DATA.location}</span>
               </div>
 
               {/* Availability badge — brighter ping */}
@@ -38,9 +38,9 @@ export function About() {
                   </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold">{ABOUT_DATA.title.toUpperCase()}</h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-3">{ABOUT_DATA.title.toUpperCase()}</h1>
 
-              <p className="text-base sm:text-lg text-neutral-content leading-relaxed">{ABOUT_DATA.description}</p>
+              <p className=" text-lg sm:text-xl text-neutral-content leading-relaxed">{ABOUT_DATA.description}</p>
 
               {/* Languages */}
               <div className="flex flex-col gap-2">
