@@ -1,20 +1,41 @@
+import { useState } from "react"
+
 export function LoginForm() {
-  const credentials = {
-    email: "",
-    password: "",
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    // TODO: call the auth endpoint (Django) with { email, password }
   }
 
   return (
-    <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-      <legend className="fieldset-legend">Login</legend>
+    <div className="min-h-screen flex items-center justify-center bg-base-100 px-4">
+      <form onSubmit={handleSubmit} className="fieldset bg-base-200 border-base-300 rounded-box w-full max-w-xs border p-6">
+        <legend className="fieldset-legend text-lg">Login</legend>
 
-      <label className="label" htmlFor="email">Email</label>
-      <input id="email" type="email" className="input" placeholder="Email" />
+        <label className="label" htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          className="input w-full"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <label className="label" htmlFor="password">Password</label>
-      <input id="password" type="password" className="input" placeholder="Password" />
+        <label className="label mt-2" htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          className="input w-full"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button className="btn btn-neutral mt-4">Login</button>
-    </fieldset>
+        <button type="submit" className="btn btn-neutral mt-4 w-full">Login</button>
+      </form>
+    </div>
   )
 }
