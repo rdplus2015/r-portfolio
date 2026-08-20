@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom"
 import { Home } from "./pages/Home"
 import { Projects } from "./pages/Projects"
 import { ProjectView } from "./components/ProjectView.tsx"
-import { AdminLayout } from "./components/admin/AdminLayout.tsx"
+import { AdminLayout } from "./components/admin/layout/AdminLayout.tsx"
 import { LoginForm } from "./components/admin/LoginForm.tsx"
 import {AdminDashboard} from "./components/admin/Dashboard.tsx";
 

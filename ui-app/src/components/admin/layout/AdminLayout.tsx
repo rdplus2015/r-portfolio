@@ -1,4 +1,4 @@
-import { AdminSidebar } from "./AdminSidebar"
+import { AdminSidebar } from "./AdminSidebar.tsx"
 import type { ReactNode } from "react"
 
 interface AdminLayoutProps {
