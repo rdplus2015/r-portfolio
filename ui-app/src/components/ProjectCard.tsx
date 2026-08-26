@@ -30,12 +30,12 @@ const PROJECTS_DATA: ProjectCardProps[] = [
       "A full-stack developer portfolio built from scratch, used as a learning vehicle for React, Django REST Framework, and cloud platforms.",
     longDescription:
       "This portfolio was built to practice React fundamentals before moving to Next.js, while also serving as my real, public-facing developer showcase. It connects to a Django REST Framework backend for dynamic content management, and it's deployed on Vercel with the API hosted on Railway.",
-    backendImage: "/images/portfolio-backend.png",
-    frontendImage: "/images/portfolio-frontend.png",
-    deploymentImage: "/images/portfolio-deployment.png",
+    backendImage: "/0.webp",
+    frontendImage: "/0.webp",
+    deploymentImage: "/0.webp",
     githubUrl: "https://github.com/ridi/portfolio",
-    liveUrl: "",
-    linkedinUrl: "",
+    liveUrl: "https://github.com/ridi/portfolio",
+    linkedinUrl: "https://github.com/ridi/portfolio",
     featured: true,
     tags: "Personal Project",
     skills: [
@@ -65,13 +65,13 @@ export function ProjectCard({
       )}
 
       <div className="card-body">
-        {featured && <span className="badge badge-primary w-fit">Featured</span>}
+        {featured && <span className="badge badge-success badge-outline w-fit">Featured</span>}
 
         <h2 className="text-xl font-bold">{title}</h2>
 
         <div className="flex gap-2 flex-wrap">
           {tags.split(",").map((tag) => (
-            <span key={tag} className="badge">
+            <span key={tag} className="badge badge-primary w-fit">
               {tag.trim()}
             </span>
           ))}
@@ -81,7 +81,7 @@ export function ProjectCard({
 
         <div className="flex flex-wrap gap-2 mt-2">
           {skills.map((skill) => (
-            <span key={skill.id} className="badge badge-outline">
+            <span key={skill.id} className="badge badge-primary  badge-outline">
               {skill.name}
             </span>
           ))}
