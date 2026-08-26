@@ -28,7 +28,7 @@ const COLOR_PALETTE = [
 
 // Skills are assigned a color deterministically (same skill = same color
 // every render), not truly at random, so tags don't flicker between colors.
-function getColorForSkill(name: string): string {
+export function getColorForSkill(name: string): string {
   let hash = 0
   for (let i = 0; i < name.length; i++) {
     hash = name.charCodeAt(i) + ((hash << 5) - hash)

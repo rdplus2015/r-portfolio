@@ -2,6 +2,8 @@
 import { useParams, Link } from "react-router-dom"
 import { PROJECTS_DATA } from "../components/ProjectCard.tsx"
 import {Header} from "../components/layout/Header.tsx";
+import {Tag} from "../components/Tag.tsx";
+import {getColorForSkill} from "../components/Skills.tsx";
 
 export function ProjectView() {
   const { slug } = useParams()
@@ -36,9 +38,16 @@ export function ProjectView() {
         <Header />
 
         <div className="py-20 px-4 sm:px-6 bg-base-100 min-h-screen">
-          <div className="max-w-6xl mx-auto flex flex-col gap-6">
+          <div className="max-w-6xl mx-auto flex flex-col gap-8">
 
-            <Link to="/projects" className="link text-primary w-fit">← Back to projects</Link>
+            <Link to="/projects" className="link text-primary w-fit flex gap-2">
+              <svg className="w-6 h-6" aria-hidden="true"
+                   xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+              </svg>
+
+              Back to projects</Link>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               {title}
@@ -46,7 +55,7 @@ export function ProjectView() {
 
             <div className="flex gap-2 flex-wrap">
               {tags.split(",").map((tag) => (
-                  <span key={tag} className="badge">{tag.trim()}</span>
+                  <span key={tag} className="badge badge-success ">{tag.trim()}</span>
               ))}
             </div>
 
@@ -66,7 +75,7 @@ export function ProjectView() {
 
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
-                  <span key={skill.id} className="badge badge-outline">{skill.name}</span>
+                  <Tag key={skill.id} label={skill.name}  color={getColorForSkill(skill.name)}> </Tag>
               ))}
             </div>
 
@@ -76,14 +85,14 @@ export function ProjectView() {
                     GitHub
                   </a>
               )}
-              {liveUrl && (
-                  <a href={liveUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                    Live Demo
+              { linkedinUrl && (
+                  <a href={liveUrl} className="btn btn-outline btn-primary" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
                   </a>
               )}
-              {linkedinUrl && (
-                  <a href={linkedinUrl} className="btn btn-outline btn-primary" target="_blank" rel="noopener noreferrer">
-                    LinkedIn
+              { liveUrl && (
+                  <a href={linkedinUrl} className="btn btn-success" target="_blank" rel="noopener noreferrer">
+                      Live Demo
                   </a>
               )}
             </div>
