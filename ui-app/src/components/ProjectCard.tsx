@@ -30,9 +30,9 @@ const PROJECTS_DATA: ProjectCardProps[] = [
       "A full-stack developer portfolio built from scratch, used as a learning vehicle for React, Django REST Framework, and cloud platforms.",
     longDescription:
       "This portfolio was built to practice React fundamentals before moving to Next.js, while also serving as my real, public-facing developer showcase. It connects to a Django REST Framework backend for dynamic content management, and it's deployed on Vercel with the API hosted on Railway.",
-    backendImage: "/0.webp",
-    frontendImage: "/0.webp",
-    deploymentImage: "/0.webp",
+    backendImage: "/1.png",
+    frontendImage: "/1.png",
+    deploymentImage: "/1.png",
     githubUrl: "https://github.com/ridi/portfolio",
     liveUrl: "https://github.com/ridi/portfolio",
     linkedinUrl: "https://github.com/ridi/portfolio",

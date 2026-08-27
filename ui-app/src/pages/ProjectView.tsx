@@ -37,7 +37,7 @@ export function ProjectView() {
       <>
         <Header />
 
-        <div className="py-20 px-4 sm:px-6 bg-base-100 min-h-screen">
+        <div className="py-20 px-8 sm:px-6 bg-base-100 min-h-screen">
           <div className="max-w-6xl mx-auto flex flex-col gap-8">
 
             <Link to="/projects" className="link text-primary w-fit flex gap-2">
@@ -60,10 +60,18 @@ export function ProjectView() {
             </div>
 
             {images.length > 0 && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="carousel w-full rounded-box">
                   {images.map((img, i) => (
-                      <div key={i} className="bg-base-200 rounded-box overflow-hidden">
-                        <img src={img} alt={`${title} screenshot ${i + 1}`} className="w-full h-full object-cover" />
+                      <div key={i} id={`slide-${i}`} className="carousel-item relative w-full">
+                        <img
+                            src={img}
+                            alt={`${title} screenshot ${i + 1}`}
+                            className="w-full object-cover"
+                        />
+                        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                          <a href={`#slide-${i === 0 ? images.length - 1 : i - 1}`} className="btn btn-circle">❮</a>
+                          <a href={`#slide-${i === images.length - 1 ? 0 : i + 1}`} className="btn btn-circle">❯</a>
+                        </div>
                       </div>
                   ))}
                 </div>
