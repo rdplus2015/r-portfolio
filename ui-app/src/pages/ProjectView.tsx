@@ -83,7 +83,7 @@ export function ProjectView() {
 
             <div className="flex flex-wrap gap-2">
               {skills.map((skill) => (
-                  <Tag key={skill.id} label={skill.name}  color={getColorForSkill(skill.name)}> </Tag>
+                  <Tag key={skill.id} label={skill.name}  color={getColorForSkill(skill.name)}/>
               ))}
             </div>
 
