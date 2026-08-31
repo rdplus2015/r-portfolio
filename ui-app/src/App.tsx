@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom"
 import { Home } from "./pages/Home"
 import { Projects } from "./pages/Projects"
 import { ProjectView } from "./pages/ProjectView.tsx"
-import { AdminLayout } from "./components/admin/layout/AdminLayout.tsx"
 import { LoginForm } from "./components/admin/LoginForm.tsx"
-import {AdminDashboard} from "./components/admin/Dashboard.tsx";
+import { AdminRoutes } from "./routes/AdminRoutes.tsx"
+import { AdminLayout } from "./components/admin/layout/AdminLayout.tsx"
 
 function ScrollToHash() {
     const { pathname, hash } = useLocation()
@@ -43,15 +43,14 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:slug" element={<ProjectView />} />
+                 
 
                 {/* Admin login — outside AdminLayout, no sidebar on the login screen */}
                 <Route path="/admin/login" element={<LoginForm />} />
 
-                {/* Admin area — AdminLayout wraps every nested admin page */}
-                <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-                {/* Next: /admin/projects, /admin/skills, /admin/experience, /admin/education, /admin/profile
-                    will follow the same pattern once their List/Form components exist */}
-                </Routes>
+                  <Route path="/admin/*" element={<AdminLayout><AdminRoutes /></AdminLayout>} />
+
+            </Routes>
         </>
     )
 }
