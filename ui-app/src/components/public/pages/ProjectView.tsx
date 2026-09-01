@@ -1,9 +1,10 @@
 // ProjectView.tsx
 import { useParams, Link } from "react-router-dom"
-import { PROJECTS_DATA } from "../components/ProjectCard.tsx"
-import {Header} from "../components/layout/Header.tsx";
-import {Tag} from "../components/Tag.tsx";
-import {getColorForSkill} from "../components/Skills.tsx";
+import { Header } from "../layout/Header"
+import { PROJECTS_DATA } from "../ProjectCard"
+import { getColorForSkill } from "../Skills"
+import { Tag } from "../Tag"
+
 
 export function ProjectView() {
   const { slug } = useParams()

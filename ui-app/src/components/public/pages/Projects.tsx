@@ -1,6 +1,6 @@
-import { Header } from "../components/layout/Header.tsx"
-import { Footer } from "../components/layout/Footer.tsx"
-import { ProjectsList } from "../components/ProjectCard.tsx"
+import { Header } from "../layout/Header.tsx"
+import { Footer } from "../layout/Footer.tsx"
+import { ProjectsList } from "../ProjectCard.tsx"
 
 export function Projects() {
     return (

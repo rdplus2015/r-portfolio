@@ -1,4 +1,4 @@
-import { Tag } from "./Tag.tsx"
+import { Tag } from "./Tag"
 
 export function About() {
   const ABOUT_DATA = {

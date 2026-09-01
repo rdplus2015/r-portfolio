@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom"
 import { useEffect } from "react"
 import { useLocation } from "react-router-dom"
-import { Home } from "./pages/Home"
-import { Projects } from "./pages/Projects"
-import { ProjectView } from "./pages/ProjectView.tsx"
+import { Home } from "./components/public/pages/Home.tsx"
+import { Projects } from "./components/public/pages/Projects.tsx"
+import { ProjectView } from "./components/public/pages/ProjectView.tsx"
 import { LoginForm } from "./components/admin/LoginForm.tsx"
-import { AdminRoutes } from "./routes/AdminRoutes.tsx"
 import { AdminLayout } from "./components/admin/layout/AdminLayout.tsx"
+import { AdminRoutes } from "./components/admin/routes/AdminRoutes.tsx"
 
 function ScrollToHash() {
     const { pathname, hash } = useLocation()

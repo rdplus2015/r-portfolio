@@ -1,4 +1,4 @@
-      /**
+/**
  * AdminRoutes.tsx
  *
  * Groups all backoffice routes under /admin/*, delegated from App.tsx
@@ -9,25 +9,25 @@
 
 import { Routes, Route } from "react-router-dom"
 
-import { AdminDashboard } from "../components/admin/Dashboard"
+import { AdminDashboard } from "../Dashboard"
 
-import { EducationForm } from "../components/admin/EducationForm"
+import { EducationForm } from "../EducationForm"
 
-import { ExperienceList } from "../components/admin/ExperienceList"
-import { ExperienceForm } from "../components/admin/ExperienceForm"
+import { ExperienceList } from "../ExperienceList"
+import { ExperienceForm } from "../ExperienceForm"
 
-import { SkillList } from "../components/admin/SkillList"
-import { SkillForm } from "../components/admin/SkillForm"
+import { SkillList } from "../SkillList"
+import { SkillForm } from "../SkillForm"
 
-import { ProjectForm } from "../components/admin/ProjectForm"
+import { ProjectForm } from "../ProjectForm"
 
 
-import { AboutForm } from "../components/admin/AboutForm"
-import { LanguageForm } from "../components/admin/LanguageForm"
-import { InterestForm } from "../components/admin/InterestForm"
-import { EducationList } from "../components/admin/ EducationList"
-import { Profile } from "../components/admin/profile"
-import { ProjectList } from "../components/admin/ProjectList"
+import { AboutForm } from "../AboutForm"
+import { LanguageForm } from "../LanguageForm"
+import { InterestForm } from "../InterestForm"
+import { EducationList } from "../ EducationList"
+import { Profile } from "../profile"
+import { ProjectList } from "../ProjectList"
 
 export function AdminRoutes() {
   return (
