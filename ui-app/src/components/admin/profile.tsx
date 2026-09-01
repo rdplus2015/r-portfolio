@@ -33,10 +33,10 @@ export function Profile() {
   return (
     <div className="flex flex-col gap-6">
       {/* About, contact, and social links — all fixed single values */}
-      <section className="card bg-base-200 p-4">
+      <section className="card bg-base-200 p-10 gap-4">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-bold">About</h2>
-          <Link to="/admin/profile/about/edit" className="btn btn-sm">Edit</Link>
+          <Link to="/admin/profile/about/edit" className="btn btn-primary btn-sm">Edit</Link>
         </div>
         <p>{PROFILE_DATA.bio}</p>
         <p>{PROFILE_DATA.location}</p>
@@ -47,17 +47,17 @@ export function Profile() {
       </section>
 
       {/* Languages — a real one-to-many relation, so it's a list */}
-      <section className="card bg-base-200 p-4">
+      <section className="card bg-base-200 p-10">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-bold">Languages</h2>
-          <Link to="/admin/profile/languages/new" className="btn btn-sm">Add New</Link>
+          <Link to="/admin/profile/languages/new" className="btn btn-primary btn-sm mb-3">Add New</Link>
         </div>
         <ul className="flex flex-col gap-1">
           {LANGUAGES.map((lang) => (
             <li key={lang.id} className="flex justify-between items-center">
               <span>{lang.name} — {lang.level}</span>
               <div className="flex gap-2">
-                <Link to={`/admin/profile/languages/${lang.id}/edit`} className="btn btn-xs">Edit</Link>
+                <Link to={`/admin/profile/languages/${lang.id}/edit`} className="btn btn-xs btn-warning">Edit</Link>
                 <button className="btn btn-xs btn-error">Delete</button>
               </div>
             </li>
@@ -66,17 +66,17 @@ export function Profile() {
       </section>
 
       {/* Interests — same reasoning as Languages */}
-      <section className="card bg-base-200 p-4">
+      <section className="card bg-base-200 p-10">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-bold">Interests</h2>
-          <Link to="/admin/profile/interests/new" className="btn btn-sm">Add New</Link>
+          <Link to="/admin/profile/interests/new" className="btn btn-primary btn-sm mb-3">Add New</Link>
         </div>
         <ul className="flex flex-col gap-1">
           {INTERESTS.map((interest) => (
             <li key={interest.id} className="flex justify-between items-center">
               <span>{interest.label}</span>
               <div className="flex gap-2">
-                <Link to={`/admin/profile/interests/${interest.id}/edit`} className="btn btn-xs">Edit</Link>
+                <Link to={`/admin/profile/interests/${interest.id}/edit`} className="btn btn-xs btn-warning">Edit</Link>
                 <button className="btn btn-xs btn-error">Delete</button>
               </div>
             </li>
