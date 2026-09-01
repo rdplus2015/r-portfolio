@@ -1,4 +1,4 @@
-/**
+      /**
  * AdminRoutes.tsx
  *
  * Groups all backoffice routes under /admin/*, delegated from App.tsx
@@ -9,6 +9,7 @@
 
 import { Routes, Route } from "react-router-dom"
 
+import { AdminDashboard } from "../components/admin/Dashboard"
 
 import { EducationForm } from "../components/admin/EducationForm"
 
@@ -18,12 +19,15 @@ import { ExperienceForm } from "../components/admin/ExperienceForm"
 import { SkillList } from "../components/admin/SkillList"
 import { SkillForm } from "../components/admin/SkillForm"
 
-
-import { ProfileForm, ProjectList } from "../components/admin/ProfileForm"
-import { EducationList } from "../components/admin/ EducationList"
-import { AdminDashboard } from "../components/admin/Dashboard"
 import { ProjectForm } from "../components/admin/ProjectForm"
 
+
+import { AboutForm } from "../components/admin/AboutForm"
+import { LanguageForm } from "../components/admin/LanguageForm"
+import { InterestForm } from "../components/admin/InterestForm"
+import { EducationList } from "../components/admin/ EducationList"
+import { Profile } from "../components/admin/profile"
+import { ProjectList } from "../components/admin/ProjectList"
 
 export function AdminRoutes() {
   return (
@@ -51,8 +55,13 @@ export function AdminRoutes() {
       <Route path="projects/new" element={<ProjectForm />} />
       <Route path="projects/:id/edit" element={<ProjectForm />} />
 
-      {/* /admin/profile -> single form, no list (About, Language, Interest, SocialLink, SiteConfig) */}
-      <Route path="profile" element={<ProfileForm />} />
+      {/* /admin/profile -> overview of about, languages, and interests */}
+      <Route path="profile" element={<Profile />} />
+      <Route path="profile/about/edit" element={<AboutForm />} />
+      <Route path="profile/languages/new" element={<LanguageForm />} />
+      <Route path="profile/languages/:id/edit" element={<LanguageForm />} />
+      <Route path="profile/interests/new" element={<InterestForm />} />
+      <Route path="profile/interests/:id/edit" element={<InterestForm />} />
     </Routes>
   )
 }
