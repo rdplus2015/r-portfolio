@@ -1,87 +1,64 @@
 /**
- * ProfileForm.tsx
+ * ProjectForm.tsx
  *
- * Single admin screen for managing personal profile data: bio, contact
- * info, languages, interests, and social links. Unlike Education,
- * Experience, Skill, and Project, these entities have no list view —
- * they represent a single, fixed set of data about one person, so a
- * single form covers create and update in one place.
+ * Used for both creating a new project and editing an existing one.
+ * Covers short and long descriptions, three separate image categories
+ * (frontend/backend/deployment), external links, and tags/skills.
  *
- * Languages, interests, and social links are entered as comma-separated
- * text for now; a proper add/remove list UI would require state to
- * manage dynamically.
+ * Tags and skills are entered as comma-separated text; image fields
+ * accept a URL rather than a file upload.
  */
 
 import { FormInput } from "./shared/FormInput"
 import { FormTextarea } from "./shared/FormTextarea"
 
-export function ProfileForm() {
+export function ProjectForm() {
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">Profile</h1>
+      <h1 className="text-2xl font-bold mb-4">Add / Edit Project</h1>
 
-      <form className="flex flex-col gap-6 max-w-2xl">
-        {/* About section */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend">About</legend>
+      <form className="flex flex-col gap-4 max-w-2xl">
+        {/* Project title */}
+        <FormInput id="title" label="Title" placeholder="e.g. Personal Portfolio" />
 
-          <FormTextarea id="bio" label="Bio" placeholder="Short biography..." />
-          <FormTextarea id="whatIBring" label="What I Bring" placeholder="What makes you stand out..." />
-          <FormInput id="avatarUrl" label="Avatar URL" placeholder="/images/avatar.png" />
-          <FormInput id="location" label="Location" placeholder="e.g. Montreal, Canada" />
-          <FormInput id="resumeUrl" label="Resume URL" placeholder="/resume.pdf" />
+        {/* URL-friendly identifier, used for the project detail route (/projects/:slug) */}
+        <FormInput id="slug" label="Slug" placeholder="e.g. personal-portfolio" />
 
-          <div className="flex items-center gap-2 mt-2">
-            <input id="available" type="checkbox" className="checkbox" />
-            <label className="label" htmlFor="available">Currently available for work</label>
-          </div>
+        {/* Short summary, shown on the project card */}
+        <FormTextarea
+          id="description"
+          label="Short Description"
+          placeholder="One or two sentences summarizing the project..."
+        />
 
-          <FormInput
-            id="availabilityMsg"
-            label="Availability Message"
-            placeholder="e.g. Open to internships starting Summer 2027"
-          />
-        </fieldset>
+        {/* Full write-up, shown on the project detail page */}
+        <FormTextarea
+          id="longDescription"
+          label="Long Description"
+          placeholder="Full project write-up..."
+        />
 
-        {/* Contact section */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend">Contact</legend>
+        {/* One image per category, matching the three ProjectCardProps image fields */}
+        <FormInput id="frontendImage" label="Frontend Image URL" placeholder="/images/..." />
+        <FormInput id="backendImage" label="Backend Image URL" placeholder="/images/..." />
+        <FormInput id="deploymentImage" label="Deployment Image URL" placeholder="/images/..." />
 
-          <FormInput id="email" label="Email" type="email" placeholder="you@example.com" />
-          <FormInput id="phone" label="Phone" placeholder="+1 514 000 0000" />
-        </fieldset>
+        {/* External links, all optional */}
+        <FormInput id="githubUrl" label="GitHub URL" placeholder="https://github.com/..." />
+        <FormInput id="liveUrl" label="Live Demo URL" placeholder="https://..." />
+        <FormInput id="linkedinUrl" label="LinkedIn Post URL" placeholder="https://linkedin.com/..." />
 
-        {/* Languages section */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend">Languages</legend>
+        {/* Comma-separated list, parsed into an array on submit */}
+        <FormInput id="tags" label="Tags (comma-separated)" placeholder="e.g. Personal Project, Web App" />
+        <FormInput id="skills" label="Skills (comma-separated)" placeholder="e.g. React, Django REST Framework" />
 
-          <FormInput
-            id="languages"
-            label="Languages (comma-separated, name:level)"
-            placeholder="e.g. French:Native, English:Intermediate"
-          />
-        </fieldset>
+        {/* Marks whether this project should be highlighted on the public site */}
+        <div className="flex items-center gap-2">
+          <input id="featured" type="checkbox" className="checkbox" />
+          <label className="label" htmlFor="featured">Featured project</label>
+        </div>
 
-        {/* Interests section */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend">Interests</legend>
-
-          <FormInput
-            id="interests"
-            label="Interests (comma-separated)"
-            placeholder="e.g. Chess, Piano, Drums, Anime"
-          />
-        </fieldset>
-
-        {/* Social links section */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend">Social Links</legend>
-
-          <FormInput id="githubUrl" label="GitHub URL" placeholder="https://github.com/..." />
-          <FormInput id="linkedinUrl" label="LinkedIn URL" placeholder="https://linkedin.com/in/..." />
-        </fieldset>
-
-        <button type="submit" className="btn btn-primary mt-2">Save Profile</button>
+        <button type="submit" className="btn btn-primary mt-2">Save</button>
       </form>
     </div>
   )
