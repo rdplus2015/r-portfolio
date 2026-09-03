@@ -1,17 +1,18 @@
 import api from "./axiosInstance";
 
 export interface SiteConfig {
-    siteName: string;
-    siteDescription: string;
-    siteUrl: string;
-    emailPrimary: string;
-    emailSecondary: string;
-    phone: string;
-    github_url: string;
-    linkedin_url: string;
+  id: number;
+  site_name: string;
+  site_description: string;
+  site_url: string;
+  email_primary: string;
+  email_secondary: string;
+  phone: string;
+  github_url: string;
+  linkedin_url: string;
 }
 
-export const getSiteConfig = async () => {
-  const response = await api.get("/");
+export const getSiteConfig = async (): Promise<SiteConfig> => {
+  const response = await api.get<SiteConfig>("/portfolio/site-config/1/");
   return response.data;
 };
