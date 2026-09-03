@@ -28,6 +28,6 @@ urlpatterns = [
     path("portfolio/", include("projects.urls")),
     path("portfolio/", include("career.urls")),
     path("portfolio/", include("about.urls")),
-    path("portfolio/", include(router.urls)),
+    path("portfolio/", include(router.urls)), # Site-config router
 
 ]

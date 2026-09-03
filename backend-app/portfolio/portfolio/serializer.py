@@ -8,5 +8,5 @@ class SiteConfigSerializer(serializers.ModelSerializer):
         model = SiteConfig
         # SiteConfig is a singleton (only one row, enforced in the model),
         # so this serializer just exposes all its fields directly
-        fields = ["id", "email_primary", "phone", "email_secondary",
-                  "description", "github_url", "linkedin_url"]
+        fields = ["id", "site_name", "site_description", "site_url",  "email_primary", "email_secondary", "phone",
+                  "github_url", "linkedin_url"]

@@ -2,10 +2,12 @@ from django.db import models
 
 
 class SiteConfig(models.Model):
+    site_name = models.CharField(max_length=120, blank=True, default="")
+    site_description = models.TextField(blank=True)
+    site_url = models.URLField(blank=True)
     email_primary = models.EmailField()
     email_secondary = models.EmailField(blank=True)
     phone = models.CharField(max_length=20, blank=True)
-    description = models.TextField(blank=True)
     github_url = models.URLField(blank=True)
     linkedin_url = models.URLField(blank=True)
 

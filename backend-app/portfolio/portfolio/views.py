@@ -9,6 +9,6 @@ class SiteConfigViewSet(viewsets.ModelViewSet):
     serializer_class = SiteConfigSerializer
 
     def get_object(self):
-        # Same singleton pattern as AboutViewSet — always return the
+        # Same singleton pattern as AboutViewSet - always return the
         # single SiteConfig instance regardless of the URL's pk.
         return SiteConfig.load()
