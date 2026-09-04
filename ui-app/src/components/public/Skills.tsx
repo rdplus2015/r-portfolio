@@ -1,21 +1,11 @@
-import { useState, useMemo } from "react"
-import { Tag } from "./Tag.tsx"
+import { useState, useMemo, useEffect } from "react";
+import { Tag } from "./Tag.tsx";
+import { getSkills, type Skill } from "../../services/skills.ts";
 
-const title = "Skills"
+const title = "Skills";
 
-// Dummy data — will be replaced by an API call to /api/skills/
-// (color is NOT part of the backend model — assigned client-side below)
-const SKILLS = [
-  { name: "React", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "Django REST Framework", category: "Backend" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Docker", category: "DevOps" },
-  { name: "AWS", category: "Cloud" },
-]
-
-// Uses your own DaisyUI theme variables (dim theme), not hardcoded hex —
-// colors stay in sync automatically if the theme palette ever changes.
+// Color palette sourced from DaisyUI theme variables instead of hardcoded
+// hex values, so colors stay in sync if the theme palette changes.
 const COLOR_PALETTE = [
   "var(--color-primary)",
   "var(--color-accent)",
@@ -24,36 +14,53 @@ const COLOR_PALETTE = [
   "var(--color-success)",
   "var(--color-warning)",
   "var(--color-error)",
-]
+];
 
-// Skills are assigned a color deterministically (same skill = same color
-// every render), not truly at random, so tags don't flicker between colors.
+// Deterministic color assignment based on skill name (same input always
+// produces the same color), avoiding flicker between renders.
 export function getColorForSkill(name: string): string {
-  let hash = 0
+  let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    hash = name.charCodeAt(i) + ((hash << 5) - hash)
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
-  const index = Math.abs(hash) % COLOR_PALETTE.length
-  return COLOR_PALETTE[index]
+  const index = Math.abs(hash) % COLOR_PALETTE.length;
+  return COLOR_PALETTE[index];
 }
 
 export function Skills() {
-  const [activeCategory, setActiveCategory] = useState("All")
+  const [skills, setSkills] = useState<Skill[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  // Categories are derived from the skills data itself, not hardcoded —
-  // once skills come from DRF, this list updates automatically with them
+  // Fetch skills once on mount
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const skillsData = await getSkills();
+        setSkills(skillsData);
+      } catch (err) {
+        setError("Impossible de charger les compétences");
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
+  // Categories derived from fetched skills data
   const categories = useMemo(() => {
-    const unique = [...new Set(SKILLS.map((skill) => skill.category))]
-    return ["All", ...unique]
-  }, [])
+    const unique = [...new Set(skills.map((skill) => skill.category))];
+    return ["All", ...unique];
+  }, [skills]);
 
   const filteredSkills = useMemo(() => {
-    if (activeCategory === "All") return SKILLS
-    return SKILLS.filter((skill) => skill.category === activeCategory)
-  }, [activeCategory])
+    if (activeCategory === "All") return skills;
+    return skills.filter((skill) => skill.category === activeCategory);
+  }, [activeCategory, skills]);
+
+  if (error) return <p>{error}</p>;
 
   return (
-    <div id={"skills"} className="py-35 px-7 sm:px-6 bg-base-100 border-b border-base-200">
+    <div id={"skills"} className="py-35 px-===  7 sm:px-6 bg-base-100 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-10">
 
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
@@ -74,11 +81,11 @@ export function Skills() {
 
         <div className="flex flex-wrap gap-2">
           {filteredSkills.map((skill) => (
-            <Tag key={skill.name} label={skill.name} color={getColorForSkill(skill.name)} />
+            <Tag key={skill.id} label={skill.name} color={getColorForSkill(skill.name)} />
           ))}
         </div>
 
       </div>
     </div>
-  )
+  );
 }
