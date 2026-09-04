@@ -1,45 +1,26 @@
-interface EducationItem {
-  title: string
-  organization: string
-  location?: string
-  description?: string
-  startDate?: string
-  endDate?: string
-  issuedDate?: string
-  inProgress: boolean
-  credentialUrl?: string
-  badgeImage?: string
-}
-
-const EDUCATION_DATA: EducationItem[] = [
-  {
-    title: "DEC Techniques de l'informatique",
-    organization: "Collège de Rosemont",
-    location: "Montreal, Canada",
-    description:
-      "Studying software development, databases, and system architecture, with a focus on full-stack and cloud technologies.",
-    startDate: "August 2024",
-    endDate: "June 2027",
-    inProgress: true,
-    badgeImage: "/0.webp",
-  },
-  {
-    title: "AWS Certified Cloud Practitioner",
-    organization: "Amazon Web Services",
-    issuedDate: "2025",
-    inProgress: false,
-    credentialUrl: "",
-    badgeImage: "/0.webp",
-  },
-  {
-    title: "AWS Certified Developer Associate",
-    organization: "Amazon Web Services",
-    inProgress: true,
-    badgeImage: "/0.webp",
-  },
-]
+import { useState, useEffect } from "react";
+import { getEducation, type Education } from "../../services/education.ts";
 
 export function Education() {
+  const [education, setEducation] = useState<Education[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch education and certification data once on mount
+  useEffect(() => {
+    const fetchEducation = async () => {
+      try {
+        const data = await getEducation();
+        setEducation(data);
+      } catch (err) {
+        setError("Impossible de charger les données de formation");
+      }
+    };
+
+    fetchEducation();
+  }, []);
+
+  if (error) return <p>{error}</p>;
+
   return (
     <div id={"education"} className="py-30 px-7 sm:px-6 bg-base-200 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-16">
@@ -54,12 +35,12 @@ export function Education() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {EDUCATION_DATA.map((item) => (
-            <div key={item.title} className="card bg-base-300 shadow-sm shadow-secondary-content hover:shadow-md hover:shadow-primary overflow-hidden border border-transparent hover:border-primary transition-colors duration-300">
-              {item.badgeImage && (
+          {education.map((item) => (
+            <div key={item.id} className="card bg-base-300 shadow-sm shadow-secondary-content hover:shadow-md hover:shadow-primary overflow-hidden border border-transparent hover:border-primary transition-colors duration-300">
+              {item.badge_image && (
                 <figure className="bg-base-100 h-65 flex items-center justify-center p-5">
                   <img
-                    src={item.badgeImage}
+                    src={item.badge_image}
                     alt={`${item.organization} logo`}
                     className="max-h-full max-w-full object-contain"
                   />
@@ -72,23 +53,23 @@ export function Education() {
                 <div className="flex gap-2 flex-wrap">
                   <span className="badge">{item.organization}</span>
                   {item.location && <span className="badge">{item.location}</span>}
-                  {item.inProgress ? (
+                  {item.in_progress ? (
                     <span className="badge badge-warning">In Progress</span>
                   ) : (
-                    <span className="badge badge-success">{item.issuedDate}</span>
+                    <span className="badge badge-success">{item.issued_date}</span>
                   )}
                 </div>
 
-                {(item.startDate || item.endDate) && (
+                {(item.start_date || item.end_date) && (
                   <p>
-                    {item.startDate} - {item.endDate}
+                    {item.start_date} - {item.end_date}
                   </p>
                 )}
 
                 {item.description && <p className="text-lg">{item.description}</p>}
 
-                {item.credentialUrl && (
-                  <a href={item.credentialUrl} className="link" target="_blank" rel="noopener noreferrer">
+                {item.credential_url && (
+                  <a href={item.credential_url} className="link" target="_blank" rel="noopener noreferrer">
                     View credential
                   </a>
                 )}
@@ -99,5 +80,5 @@ export function Education() {
 
       </div>
     </div>
-  )
+  );
 }

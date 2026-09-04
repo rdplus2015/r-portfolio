@@ -4,7 +4,6 @@ from career.models import Education, Experience
 from projects.Serializer import SkillSerializer
 from projects.models import Skill
 
-
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
@@ -17,7 +16,6 @@ class EducationSerializer(serializers.ModelSerializer):
             "issued_date", "in_progress",
             "badge_image", "credential_url", "order"
         ]
-
 
 class ExperienceSerializer(serializers.ModelSerializer):
     # Nested read-only representation of related skills used in this experience
