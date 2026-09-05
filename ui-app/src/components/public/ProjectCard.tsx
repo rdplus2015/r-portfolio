@@ -1,51 +1,17 @@
 // ProjectCard.tsx
-import { Link } from "react-router-dom"
-
-interface SkillRef {
-  id: number
-  name: string
-}
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { getProjects, type Project } from "../../services/projects.ts";
 
 interface ProjectCardProps {
-  title: string
-  slug: string
-  description: string
-  longDescription: string
-  backendImage?: string
-  frontendImage?: string
-  deploymentImage?: string
-  githubUrl?: string
-  liveUrl?: string
-  linkedinUrl?: string
-  featured?: boolean
-  tags: string // matches Django's single CharField, not an array
-  skills: SkillRef[] // matches Django's ManyToManyField to Skill
+  title: string;
+  slug: string;
+  description: string;
+  frontendImage?: string;
+  featured?: boolean;
+  tags: string; // matches Django's single CharField, not an array
+  skills: { id: number; name: string }[]; // matches Django's ManyToManyField to Skill
 }
-
-const PROJECTS_DATA: ProjectCardProps[] = [
-  {
-    title: "Personal Portfolio",
-    slug: "personal-portfolio",
-    description:
-      "A full-stack developer portfolio built from scratch, used as a learning vehicle for React, Django REST Framework, and cloud platforms.",
-    longDescription:
-      "This portfolio was built to practice React fundamentals before moving to Next.js, while also serving as my real, public-facing developer showcase. It connects to a Django REST Framework backend for dynamic content management, and it's deployed on Vercel with the API hosted on Railway.",
-    backendImage: "/1.png",
-    frontendImage: "/1.png",
-    deploymentImage: "/1.png",
-    githubUrl: "https://github.com/ridi/portfolio",
-    liveUrl: "https://github.com/ridi/portfolio",
-    linkedinUrl: "https://github.com/ridi/portfolio",
-    featured: true,
-    tags: "Personal Project",
-    skills: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Django REST Framework" },
-      { id: 3, name: "PostgreSQL" },
-      { id: 4, name: "Tailwind CSS" },
-    ],
-  },
-]
 
 export function ProjectCard({
   title,
@@ -81,25 +47,50 @@ export function ProjectCard({
 
         <div className="flex flex-wrap gap-2 mt-2">
           {skills.map((skill) => (
-            <span key={skill.id} className="badge badge-primary  badge-outline">
+            <span key={skill.id} className="badge badge-primary badge-outline">
               {skill.name}
             </span>
           ))}
         </div>
       </div>
     </Link>
-  )
+  );
 }
 
 export function ProjectsList() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch projects, including nested skills, once on mount
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (err) {
+        setError("Impossible de charger les projets");
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  if (error) return <p>{error}</p>;
+
   return (
     <div className="flex flex-wrap gap-6">
-      {PROJECTS_DATA.map((project) => (
-        <ProjectCard key={project.slug} {...project} />
+      {projects.map((project) => (
+        <ProjectCard
+          key={project.id}
+          title={project.title}
+          slug={project.slug}
+          description={project.description}
+          frontendImage={project.frontend_image}
+          featured={project.featured}
+          tags={project.tags}
+          skills={project.skills}
+        />
       ))}
     </div>
-  )
+  );
 }
-
-export { PROJECTS_DATA }
-export type { ProjectCardProps, SkillRef }
