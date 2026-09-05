@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "../layout/Header";
 import { getColorForSkill } from "../Skills";
 import { Tag } from "../Tag";
-import type { Project } from "../../../services/projects";
+import { getProjects, type Project } from "../../../services/projects";
 
 export function ProjectView() {
   const { slug } = useParams();
