@@ -1,3 +1,7 @@
+# about/admin.py
 from django.contrib import admin
+from about.models import About, Language, Interest
 
-# Register your models here.
+admin.site.register(About)
+admin.site.register(Language)
+admin.site.register(Interest)
