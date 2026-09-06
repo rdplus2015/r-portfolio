@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
 
 const NAV_LINKS = [
-    { label: "About", href: "/#about", type: "anchor" },
-    { label: "Skills", href: "/#skills", type: "anchor" },
-    { label: "Education", href: "/#education", type: "anchor" },
-    { label: "Experience", href: "/#experience", type: "anchor" },
-    { label: "Projects", href: "/projects", type: "page" },
-    { label: "Resume", href: "/resume.pdf", type: "download" },
+    { label: "À propos", href: "/#about", type: "anchor" },
+    { label: "Compétences", href: "/#skills", type: "anchor" },
+    { label: "Formation", href: "/#education", type: "anchor" },
+    { label: "Expérience", href: "/#experience", type: "anchor" },
+    { label: "Projets", href: "/projects", type: "page" },
+    { label: "CV", href: "/resume.pdf", type: "download" },
 ]
 
 function ThemeToggle() {
@@ -32,9 +32,8 @@ function LanguageDropdown() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.5 15h5" />
                 </svg>
             </div>
-            <ul tabIndex={-1} className="dropdown-content menu bg-base-200 rounded-box z-1 w-32 p-2 shadow-sm mt-3">
-                <li><a>English</a></li>
-                <li><a>Français</a></li>
+            <ul tabIndex={-1} className="dropdown-content menu bg-base-200 rounded-box z-1 w-40 p-2 shadow-sm mt-3">
+                <li><a>English (coming soon)</a></li>
             </ul>
         </div>
     )
@@ -43,7 +42,7 @@ function LanguageDropdown() {
 export function Header() {
     return (
         <>
-            {/* ===== MOBILE HEADER — visible below lg ===== */}
+            {/* ===== MOBILE HEADER - visible below lg ===== */}
             <div className="lg:hidden mt-10 pb-10 flex items-center justify-around bg-base-100 shadow-sm border-b border-base-200 px-5">
 
                 <div className="dropdown">

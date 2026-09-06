@@ -5,7 +5,7 @@ interface AdminLayoutProps {
   children: ReactNode
 }
 
-// Hardcoded for now — will come from your auth context/API once login is wired up
+// Hardcoded until auth/JWT is wired up; will come from an auth context or /me endpoint
 const CURRENT_USER = { name: "Ridi Otoko" }
 
 export function AdminLayout({ children }: AdminLayoutProps) {

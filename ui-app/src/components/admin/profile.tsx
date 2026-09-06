@@ -32,7 +32,7 @@ const INTERESTS = [
 export function Profile() {
   return (
     <div className="flex flex-col gap-6">
-      {/* About, contact, and social links — all fixed single values */}
+      {/* About, contact, and social links - all fixed single values */}
       <section className="card bg-base-200 p-10 gap-4">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-bold">About</h2>
@@ -46,7 +46,7 @@ export function Profile() {
         <p>LinkedIn: {PROFILE_DATA.linkedinUrl}</p>
       </section>
 
-      {/* Languages — a real one-to-many relation, so it's a list */}
+      {/* Languages - a real one-to-many relation, so it's a list */}
       <section className="card bg-base-200 p-10">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-bold">Languages</h2>
@@ -65,7 +65,7 @@ export function Profile() {
         </ul>
       </section>
 
-      {/* Interests — same reasoning as Languages */}
+      {/* Interests - same reasoning as Languages */}
       <section className="card bg-base-200 p-10">
         <div className="flex justify-between items-center mb-2">
           <h2 className="text-xl font-bold">Interests</h2>

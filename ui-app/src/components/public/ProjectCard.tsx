@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getProjects, type Project } from "../../services/projects.ts";
+import type { Skill } from "../../services/skills.ts";
 
 interface ProjectCardProps {
   title: string;
@@ -10,7 +11,7 @@ interface ProjectCardProps {
   frontendImage?: string;
   featured?: boolean;
   tags: string; // matches Django's single CharField, not an array
-  skills: { id: number; name: string }[]; // matches Django's ManyToManyField to Skill
+  skills: Skill[]; // matches Django's ManyToManyField to Skill
 }
 
 export function ProjectCard({

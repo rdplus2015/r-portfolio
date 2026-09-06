@@ -9,7 +9,7 @@ const SIDEBAR_LINKS = [
 
 export function AdminSidebar() {
   function handleLogout() {
-    // TODO: clear auth token/session, then redirect to /admin/login
+    // Not implemented yet: requires the auth/JWT setup
   }
 
   return (
@@ -25,7 +25,7 @@ export function AdminSidebar() {
           ))}
         </ul>
 
-        {/* Logout — pinned to the bottom of the sidebar */}
+        {/* Logout - pinned to the bottom of the sidebar */}
         <div className="p-4 border-t border-base-300">
           <button onClick={handleLogout} className="btn btn-outline btn-error w-full gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

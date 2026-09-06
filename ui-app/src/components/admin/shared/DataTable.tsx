@@ -2,10 +2,9 @@
  * DataTable.tsx
  *
  * Generic, reusable table component for admin list views
- * (EducationList, ExperienceList, SkillList, ProjectList, etc.).
  *
  * Each entity defines its own columns and row actions via props,
- * so this component has no knowledge of any specific data shape —
+ * so this component has no knowledge of any specific data shape -
  * it only knows how to render whatever it's given. This avoids
  * duplicating <table>/<thead>/<tr>/<td> markup across every list view.
  */

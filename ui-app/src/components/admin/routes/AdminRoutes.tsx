@@ -32,7 +32,7 @@ import { ProjectList } from "../ProjectList"
 export function AdminRoutes() {
   return (
     <Routes>
-      {/* /admin -> dashboard overview */}
+      {/* /admin - dashboard overview */}
       <Route index element={<AdminDashboard />} />
 
       {/* /admin/education, /admin/education/new, /admin/education/:id/edit */}
