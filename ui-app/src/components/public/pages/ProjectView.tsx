@@ -32,6 +32,7 @@ export function ProjectView() {
     fetchProject();
   }, [slug]);
 
+  // Early returns: error / not found / loading states before rendering real content
   if (error) {
     return (
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
@@ -80,6 +81,7 @@ export function ProjectView() {
       <div className="py-20 px-8 sm:px-6 bg-base-100 min-h-screen">
         <div className="max-w-6xl mx-auto flex flex-col gap-8">
 
+          {/* Back navigation */}
           <Link to="/projects" className="link text-primary w-fit flex gap-2">
             <svg className="w-6 h-6" aria-hidden="true"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -93,12 +95,14 @@ export function ProjectView() {
             {title}
           </h1>
 
+          {/* Project tags */}
           <div className="flex gap-2 flex-wrap">
             {tags.split(",").map((tag) => (
               <span key={tag} className="badge badge-success">{tag.trim()}</span>
             ))}
           </div>
 
+          {/* Screenshot carousel: frontend, backend, deployment images */}
           {images.length > 0 && (
             <div className="carousel w-full rounded-box">
               {images.map((img, i) => (
@@ -121,12 +125,14 @@ export function ProjectView() {
             {long_description}
           </p>
 
+          {/* Related skills */}
           <div className="flex flex-wrap gap-2">
             {skills.map((skill) => (
               <Tag key={skill.id} label={skill.name} color={getColorForSkill(skill.name)}/>
             ))}
           </div>
 
+          {/* External links: GitHub, LinkedIn, live demo */}
           <div className="flex flex-wrap gap-4 mt-4">
             {github_url && (
               <a href={github_url} className="btn btn-outline btn-primary" target="_blank" rel="noopener noreferrer">

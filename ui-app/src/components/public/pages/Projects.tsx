@@ -3,6 +3,7 @@ import { Footer } from "../layout/Footer.tsx"
 import { ProjectsList } from "../ProjectCard.tsx"
 
 export function Projects() {
+    const title = "Projects"
     return (
         <main>
             <Header />
@@ -11,7 +12,7 @@ export function Projects() {
                 <div className="max-w-6xl mx-auto flex flex-col mb-15 pb-8  border-b-2 border-primary">
 
                     <h1 className="text-[clamp(2.25rem,5vw,5.5rem)] font-bold leading-tight">
-                        Projects
+                        {title}
                     </h1>
                 </div>
 

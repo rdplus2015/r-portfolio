@@ -3,6 +3,8 @@ import { Tag } from "./Tag";
 import { getAbout, type About as AboutData } from "../../services/about.ts";
 
 export function About() {
+
+  const title = "À PROPOS DE MOI";
   const [about, setAbout] = useState<AboutData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,17 +45,17 @@ export function About() {
             <span className={`relative inline-flex rounded-full h-3 w-3 ${about.available ? "bg-success" : "bg-error"}`}></span>
           </span>
           <span className="text-sm font-medium">
-            {about.available ? "Available" : "Not available"}
+            {about.available ? "Disponible" : "Non disponible"}
           </span>
         </div>
 
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-3">ABOUT ME</h1>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold py-3">{title}</h1>
 
         <p className="text-lg sm:text-xl text-neutral-content leading-relaxed">{about.description}</p>
 
         {/* Languages */}
         <div className="flex flex-col gap-2">
-          <span className="text-xs uppercase tracking-wide text-neutral-content/50">Languages</span>
+          <span className="text-xs uppercase tracking-wide text-neutral-content/50">Langues</span>
           <div className="flex gap-2 flex-wrap">
             {about.languages.map((lang) => (
               <Tag key={lang.id} label={`${lang.name} — ${lang.level}`} color="var(--color-primary)" />
@@ -66,7 +68,7 @@ export function About() {
 
         {/* Interests */}
         <div className="flex flex-col gap-2">
-          <span className="text-xs uppercase tracking-wide text-neutral-content/50">Interests</span>
+          <span className="text-xs uppercase tracking-wide text-neutral-content/50">Intérets</span>
           <div className="flex gap-2 flex-wrap">
             {about.interests.map((interest) => (
               <Tag key={interest.id} label={interest.label} color="var(--color-accent)" />
