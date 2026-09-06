@@ -137,4 +137,6 @@ AUTH_USER_MODEL = "users.CustomUser"
 # CORS config
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "http://192.168.0.173:5173",
+"http://192.168.0.142:5173",
 ]
