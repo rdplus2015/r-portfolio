@@ -16,7 +16,7 @@ export function useTheme() {
     return "dark"
   })
 
-  // Applies the theme to <html> and persists it whenever it changes.#FCFBF4
+  // Applies the theme to <html> and persists it whenever it changes.
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", THEMES[theme])
     localStorage.setItem("theme", theme)

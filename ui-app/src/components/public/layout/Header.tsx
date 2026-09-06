@@ -100,7 +100,7 @@ export function Header() {
                             </li>
                         ) : (
                             <li key={link.href}>
-                                <Link to={link.href} className="hover:text-primary hover:bg-base-200 border-primary-1 transition-all duration-300 hover:[text-shadow:0_0_2px_var(--color-primary)] border-b-2 border-transparent hover:border-primary hover:rounded-none rounded-none">{link.label}</Link>
+                                <Link to={link.href} className="hover:text-primary hover:bg-base-200 border-primary-1 transition-all duration-300  border-b-2 border-transparent hover:border-primary hover:rounded-none rounded-none">{link.label}</Link>
                             </li>
                         )
                     )}
