@@ -39,7 +39,7 @@ export function Hero() {
                 </div>
 
                 {/* Right column: decorative badge cluster, hidden on smaller screens */}
-                <div className="hidden lg:flex relative items-center justify-center min-h-[400px]">
+                <div className="hidden lg:flex relative items-center justify-center min-h-100">
                     <div className="w-64 h-64 rounded-full bg-base-200 border-2 border-primary shadow-[0_0_60px_-10px] shadow-primary flex items-center justify-center">
                         <span className="text-5xl font-bold text-primary">{"</>"}</span>
                     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getExperience, type Experience as ExperienceData } from "../../services/experience.ts";
 
+// Computes a human-readable duration ("X years and Y months") between two dates
 function formatDuration(startDate: string, endDate: string | null): string {
   const start = new Date(startDate);
   const end = endDate ? new Date(endDate) : new Date();
@@ -21,12 +22,14 @@ function formatDuration(startDate: string, endDate: string | null): string {
   return parts.length > 0 ? parts.join(" and ") : "Less than a month";
 }
 
+// Formats a date string as "Month Year", or "Present" if the entry is ongoing
 function formatDate(dateString: string | null): string {
   if (!dateString) return "Present";
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
+// Single experience entry: dates, company info, duration, description, technologies
 function ExperienceCard({ exp }: { exp: ExperienceData }) {
   return (
     <div className="bg-base-200 p-6 rounded-box w-full">
@@ -91,9 +94,10 @@ export function Experience() {
       <div className="max-w-6xl mx-auto flex flex-col gap-6">
 
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-          Experience
+          Expérience
         </h2>
 
+        {/* Timeline: alternating cards connected by a vertical line on desktop */}
         <div className="relative flex flex-col gap-10">
           {/* Vertical line down the center on desktop, hidden on mobile */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary -translate-x-1/2" />

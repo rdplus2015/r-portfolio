@@ -5,6 +5,7 @@ import { Header } from "../layout/Header";
 import { getColorForSkill } from "../Skills";
 import { Tag } from "../Tag";
 import { getProjects, type Project } from "../../../services/projects";
+import { Footer } from "../layout/Footer";
 
 export function ProjectView() {
   const { slug } = useParams();
@@ -89,7 +90,7 @@ export function ProjectView() {
                     d="M5 12h14M5 12l4-4m-4 4 4 4"/>
             </svg>
 
-            Back to projects</Link>
+           Voir tous les projets </Link>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
             {title}
@@ -153,6 +154,7 @@ export function ProjectView() {
 
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

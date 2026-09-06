@@ -25,18 +25,21 @@ export function Education() {
     <div id={"education"} className="py-30 px-7 sm:px-6 bg-base-200 border-b border-base-200">
       <div className="max-w-6xl mx-auto flex flex-col gap-16">
 
+        {/* Section header */}
         <div className="flex flex-col gap-2">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            Education & Certifications
+            Formation & Certifications
           </h2>
           <p className="text-neutral-content/60 text-base sm:text-lg">
-            An overview of my academic background, certifications, and key credentials.
+            Un aperçu de mon parcours académique et de mes principales qualifications.
           </p>
         </div>
 
+        {/* Education/certification cards grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {education.map((item) => (
             <div key={item.id} className="card bg-base-300 shadow-sm shadow-secondary-content hover:shadow-md hover:shadow-primary overflow-hidden border border-transparent hover:border-primary transition-colors duration-300">
+              {/* Badge/logo image */}
               {item.badge_image && (
                 <figure className="bg-base-100 h-65 flex items-center justify-center p-5">
                   <img
@@ -50,6 +53,7 @@ export function Education() {
               <div className="card-body">
                 <h2 className="text-xl font-bold">{item.title}</h2>
 
+                {/* Organization, location, and status badges */}
                 <div className="flex gap-2 flex-wrap">
                   <span className="badge">{item.organization}</span>
                   {item.location && <span className="badge">{item.location}</span>}

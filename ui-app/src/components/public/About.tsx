@@ -4,7 +4,7 @@ import { getAbout, type About as AboutData } from "../../services/about.ts";
 
 export function About() {
 
-  const title = "À PROPOS DE MOI";
+  const title = "À PROPOS";
   const [about, setAbout] = useState<AboutData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -58,7 +58,7 @@ export function About() {
           <span className="text-xs uppercase tracking-wide text-neutral-content/50">Langues</span>
           <div className="flex gap-2 flex-wrap">
             {about.languages.map((lang) => (
-              <Tag key={lang.id} label={`${lang.name} — ${lang.level}`} color="var(--color-primary)" />
+              <Tag key={lang.id} label={`${lang.name} - ${lang.level}`} color="var(--color-primary)" />
             ))}
           </div>
         </div>

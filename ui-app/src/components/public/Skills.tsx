@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { Tag } from "./Tag.tsx";
 import { getSkills, type Skill } from "../../services/skills.ts";
 
-const title = "Skills";
+const title = "Compétences";
 
 // Color palette sourced from DaisyUI theme variables instead of hardcoded
 // hex values, so colors stay in sync if the theme palette changes.

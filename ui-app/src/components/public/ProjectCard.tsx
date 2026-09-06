@@ -32,7 +32,7 @@ export function ProjectCard({
       )}
 
       <div className="card-body">
-        {featured && <span className="badge badge-success badge-outline w-fit">Featured</span>}
+        {featured && <span className="badge badge-success badge-outline w-fit">En vedette</span>}
 
         <h2 className="text-xl font-bold">{title}</h2>
 
