@@ -3,40 +3,40 @@
 
 
 @plugin "daisyui/theme" {
-  name: "corporate";
+  name: "lemonade";
   default: false;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(100% 0 0);
-  --color-base-200: oklch(93% 0 0);
-  --color-base-300: oklch(86% 0 0);
-  --color-base-content: oklch(22.389% 0.031 278.072);
-  --color-primary: #58A6FF;
-  --color-primary-content: oklch(100% 0 0);
-  --color-secondary: oklch(55% 0.046 257.417);
-  --color-secondary-content: oklch(100% 0 0);
-  --color-accent: oklch(60% 0.118 184.704);
-  --color-accent-content: oklch(100% 0 0);
-  --color-neutral: oklch(0% 0 0);
-  --color-neutral-content: oklch(100% 0 0);
-  --color-info: oklch(60% 0.126 221.723);
-  --color-info-content: oklch(100% 0 0);
-  --color-success: oklch(62% 0.194 149.214);
-  --color-success-content: oklch(100% 0 0);
-  --color-warning: oklch(85% 0.199 91.936);
-  --color-warning-content: oklch(0% 0 0);
-  --color-error: oklch(70% 0.191 22.216);
-  --color-error-content: oklch(0% 0 0);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.25rem;
+  --color-base-100: #e3ede5; 
+  --color-base-200: oklch(100% 0 91.700);
+  --color-base-300: #ffffff;
+  --color-base-content: oklch(19.742% 0.004 123.72);
+  --color-primary: oklch(30.98% 0.075 108.6);
+  --color-primary-content: oklch(86.196% 0.015 108.6);
+  --color-secondary: oklch(100% 0.008 82.600);
+  --color-secondary-content: oklch(19.742% 0.004 123.72);
+  --color-accent: oklch(33.5% 0.338 134.600);
+  --color-accent-content: oklch(86.196% 0.015 108.6);
+  --color-neutral: #C6D89E;
+  --color-neutral-content: oklch(19.742% 0.004 123.72);
+  --color-info: oklch(86.19% 0.047 224.14);
+  --color-info-content: oklch(17.238% 0.009 224.14);
+  --color-success: oklch(86.19% 0.047 157.85);
+  --color-success-content: oklch(17.238% 0.009 157.85);
+  --color-warning: oklch(86.19% 0.047 102.15);
+  --color-warning-content: oklch(17.238% 0.009 102.15);
+  --color-error: oklch(86.19% 0.047 25.85);
+  --color-error-content: oklch(17.238% 0.009 25.85);
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
   --depth: 0;
   --noise: 0;
-}
 
+}
 
 
 
