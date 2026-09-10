@@ -1,6 +1,7 @@
-// src/hooks/useGsapScroll.ts
-// Sets up smooth scrolling and syncs it with ScrollTrigger.
-// Mounted once in App.tsx.
+// src/utils/useGsapScroll.ts
+// Sets up smooth scrolling with Lenis and syncs it with GSAP's
+// ScrollTrigger, so scroll-based animations stay in sync with the
+// smoothed scroll position. Mounted once, in App.tsx.
 
 import { useEffect } from "react"
 import Lenis from "lenis"
@@ -11,14 +12,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 export function useGsapScroll() {
   useEffect(() => {
-    const lenis = new Lenis()
+    const lenis = new Lenis({
+      duration: 1.4,        // higher = smoother/slower, more pronounced glide
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+    })
+
     lenis.on("scroll", ScrollTrigger.update)
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000)
-    })
-    gsap.ticker.lagSmoothing(0)
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
 
-    return () => lenis.destroy()
+    return () => {
+      lenis.destroy()
+    }
   }, [])
 }

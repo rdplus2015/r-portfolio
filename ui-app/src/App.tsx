@@ -4,8 +4,9 @@ import { useLocation } from "react-router-dom"
 import { Home } from "./components/public/pages/Home.tsx"
 import { Projects } from "./components/public/pages/Projects.tsx"
 import { ProjectView } from "./components/public/pages/ProjectView.tsx"
-import { LoginForm } from "./components/admin/LoginForm.tsx"
-import { AdminLayout } from "./components/admin/layout/AdminLayout.tsx"
+import { useGsapScroll } from "./components/utils/useGsapScroll.ts"
+//import { LoginForm } from "./components/admin/LoginForm.tsx"
+//import { AdminLayout } from "./components/admin/layout/AdminLayout.tsx"
 // import { AdminRoutes } from "./components/admin/routes/AdminRoutes.tsx"
 
 function ScrollToHash() {
@@ -35,6 +36,8 @@ function ScrollToHash() {
 }
 
 function App() {
+    
+    useGsapScroll()
     return (
         <>
             <ScrollToHash />
