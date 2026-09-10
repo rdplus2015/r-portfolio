@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger)
 export function useGsapScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.4,        // higher = smoother/slower, more pronounced glide
+      duration: 1.2,        // higher = smoother/slower, more pronounced glide
       easing: (t) => 1 - Math.pow(1 - t, 3),
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
