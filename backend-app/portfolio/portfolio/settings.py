@@ -124,6 +124,14 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Django REST Framework
+# Default: read (GET/HEAD/OPTIONS) allowed for everyone, write (POST/PUT/PATCH/DELETE) requires authentication
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+}
+
 # ENV
 env = environ.Env()
 environ.Env.read_env(BASE_DIR / '.env')
