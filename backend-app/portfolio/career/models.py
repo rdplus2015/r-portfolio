@@ -21,7 +21,7 @@ class Education(models.Model):
 
     # Official badge image for the certification (e.g. the AWS badge PNG).
     # Different from credential_url: this is the visual badge itself.
-    badge_image = models.URLField(blank=True)
+    badge_image = models.ImageField(upload_to='badges/', blank=True, null=True)
 
     order = models.IntegerField(default=0)
 
@@ -52,7 +52,7 @@ class Experience(models.Model):
     description = models.TextField(blank=True)
 
     # Optional company logo, free/optional field, no strict requirement.
-    company_logo = models.URLField(blank=True)
+    company_logo = models.ImageField(upload_to='logos/', blank=True, null=True)
 
     # ------------------------------------------------------------------
     # Many-to-many link to Skill, which lives in the "projects" app.

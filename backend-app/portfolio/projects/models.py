@@ -34,9 +34,9 @@ class Project(models.Model):
 
     # Three separate images instead of a single generic one, matching
     # the actual React data (backend/frontend/deployment screenshots).
-    backend_image = models.URLField(blank=True)
-    frontend_image = models.URLField(blank=True)
-    deployment_image = models.URLField(blank=True)
+    backend_image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    frontend_image = models.ImageField(upload_to='projects/', blank=True, null=True)
+    deployment_image = models.ImageField(upload_to='projects/', blank=True, null=True)
 
     github_url = models.URLField(blank=True)
     live_url = models.URLField(blank=True)
