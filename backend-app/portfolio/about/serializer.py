@@ -24,4 +24,4 @@ class AboutSerializer(serializers.ModelSerializer):
         model = About
         # About is a singleton, and its languages/interests are managed
         # via their own endpoints (no write nested fields needed here)
-        fields = ("id", "description", "location", "available", "resume_url", "languages", "interests")
+        fields = ("id", "description", "location", "available", "resume", "languages", "interests")

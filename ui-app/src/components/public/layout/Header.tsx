@@ -1,15 +1,15 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useTheme } from "../../utils/useTheme"
+import { getAbout } from "../../../services/about"
 
-const NAV_LINKS = [
+const STATIC_NAV_LINKS = [
     { label: "À propos", href: "/#about", type: "anchor" },
     { label: "Compétences", href: "/#skills", type: "anchor" },
     { label: "Formation", href: "/#education", type: "anchor" },
     { label: "Expérience", href: "/#experience", type: "anchor" },
     { label: "Projets", href: "/projects", type: "page" },
-    { label: "CV", href: "/resume.pdf", type: "download" },
 ]
-
 
 
 function ThemeToggle() {
@@ -44,6 +44,26 @@ function LanguageDropdown() {
 }
 
 export function Header() {
+    const [resumeUrl, setResumeUrl] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchResume = async () => {
+            try {
+                const about = await getAbout()
+                if (about.resume) {
+                    setResumeUrl(about.resume)
+                }
+            } catch (err) {
+                // Silently fail — CV link simply won't render if unavailable
+            }
+        }
+        fetchResume()
+    }, [])
+
+    const NAV_LINKS = resumeUrl
+        ? [...STATIC_NAV_LINKS, { label: "CV", href: resumeUrl, type: "download" }]
+        : STATIC_NAV_LINKS
+
     return (
         <>
             {/* ===== MOBILE HEADER - visible below lg ===== */}

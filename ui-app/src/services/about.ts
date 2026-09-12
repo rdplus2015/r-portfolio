@@ -18,7 +18,7 @@ export interface About {
   description: string;
   location: string;
   available: boolean;
-  resume_url: string;
+  resume: string;
   languages: Language[];
   interests: Interest[];
 }

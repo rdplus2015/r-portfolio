@@ -105,7 +105,7 @@ export function ProjectView() {
 
           {/* Screenshot carousel: frontend, backend, deployment images */}
           {images.length > 0 && (
-            <div className="carousel w-full rounded-box">
+            <div className="carousel w-full rounded-box h-72 sm:h-96 lg:h-[28rem]">
               {images.map((img, i) => (
                 <div key={i} id={`slide-${i}`} className="carousel-item relative w-full">
                   <img

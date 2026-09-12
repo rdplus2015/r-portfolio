@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'about',
     'career',
     'projects',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [

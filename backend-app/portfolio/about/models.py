@@ -5,7 +5,7 @@ class About(models.Model):
     description = models.TextField()
     location = models.CharField(max_length=100)
     available = models.BooleanField(default=True)
-    resume_url = models.URLField(blank=True, null=True)
+    resume = models.FileField(upload_to='resume/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Force the primary key to always be 1, no matter how many times
