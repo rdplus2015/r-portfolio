@@ -62,7 +62,7 @@ const HERO_DATA = {
                     </div>
 
                     <div ref={tag1Ref} className="card bg-base-200 shadow-md px-8 py-2 absolute top-8 right-0 border border-primary-content hover:border-primary transition-colors duration-500">
-                        <h4 className="font-bold text-sm">développer</h4>
+                        <h4 className="font-bold text-sm">Développer</h4>
                     </div>
 
                     <div ref={tag2Ref} className="card bg-base-200 shadow-md px-8 py-2 absolute bottom-3 left-0 border border-primary-content hover:border-primary transition-colors duration-500">
