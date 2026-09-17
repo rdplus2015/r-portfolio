@@ -5,15 +5,16 @@ class Skill(models.Model):
     class Category(models.TextChoices):
         FRONTEND = "frontend", "Frontend"
         BACKEND = "backend", "Backend"
-        DATABASE = "database", "Database"
+        DATABASE = "database", "Base de données"
         DEVOPS = "devops", "DevOps"
         CLOUD = "cloud", "Cloud"
         MOBILE = "mobile", "Mobile"
-        AI = "ai", "AI"
-        GAME_DEV = "game_dev", "Game Development"
-        LANGUAGE = "language", "Language"
-        TOOL = "tool", "Tool"
-        OTHER = "other", "Other"
+        AI = "ai", "IA"
+        GAME_DEV = "game_dev", "Jeu vidéo"
+        LANGUAGE = "language", "Langage"
+        TOOL = "tool", "Outil"
+        OTHER = "other", "Autre"
+
 
     name = models.CharField(max_length=50)
     category = models.CharField(max_length=20, choices=Category.choices)
