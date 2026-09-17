@@ -9,7 +9,7 @@ const title = "Compétences";
 const COLOR_PALETTE = [
   "var(--color-primary)",
   "var(--color-accent)",
-  "var(--color-neutral)",
+  "var(--color-base-content)",
   "var(--color-info)",
   "var(--color-success)",
   "var(--color-warning)",
