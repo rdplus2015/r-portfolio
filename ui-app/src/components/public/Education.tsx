@@ -44,7 +44,7 @@ export function Education() {
                 <figure className="bg-base-100 h-65 flex items-center justify-center p-5">
                   <img
                     src={item.badge_image}
-                    alt={`${item.organization} logo`}
+                    alt={`Logo ${item.organization}`}
                     className="max-h-full max-w-full object-contain"
                   />
                 </figure>
@@ -58,7 +58,7 @@ export function Education() {
                   <span className="badge">{item.organization}</span>
                   {item.location && <span className="badge">{item.location}</span>}
                   {item.in_progress ? (
-                    <span className="badge badge-warning">In Progress</span>
+                    <span className="badge badge-warning">En cours</span>
                   ) : (
                     <span className="badge badge-success">{item.issued_date}</span>
                   )}
@@ -74,7 +74,7 @@ export function Education() {
 
                 {item.credential_url && (
                   <a href={item.credential_url} className="link" target="_blank" rel="noopener noreferrer">
-                    View credential
+                    Voir le certificat
                   </a>
                 )}
               </div>
