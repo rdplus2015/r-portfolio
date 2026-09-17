@@ -9,7 +9,7 @@ const title = "Compétences";
 const COLOR_PALETTE = [
   "var(--color-primary)",
   "var(--color-accent)",
-  "var(--color-secondary)",
+  "var(--color-neutral)",
   "var(--color-info)",
   "var(--color-success)",
   "var(--color-warning)",
@@ -46,10 +46,11 @@ export function Skills() {
     fetchSkills();
   }, []);
 
-  // Categories derived from fetched skills data
+  // Categories derived from fetched skills data (keep raw key + display label together)
   const categories = useMemo(() => {
-    const unique = [...new Set(skills.map((skill) => skill.category))];
-    return ["All", ...unique];
+    const map = new Map<string, string>();
+    skills.forEach((skill) => map.set(skill.category, skill.category_display));
+    return [{ key: "All", label: "Tous" }, ...Array.from(map, ([key, label]) => ({ key, label }))];
   }, [skills]);
 
   const filteredSkills = useMemo(() => {
@@ -68,13 +69,13 @@ export function Skills() {
         </h2>
 
         <div className="flex gap-2 flex-wrap">
-          {categories.map((category) => (
+          {categories.map(({ key, label }) => (
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`btn ${activeCategory === category ? "btn-primary" : "btn-outline btn-primary"}`}
+              key={key}
+              onClick={() => setActiveCategory(key)}
+              className={`btn ${activeCategory === key ? "btn-primary" : "btn-outline btn-primary"}`}
             >
-              {category}
+              {label}
             </button>
           ))}
         </div>

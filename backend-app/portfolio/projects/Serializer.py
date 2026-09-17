@@ -4,9 +4,11 @@ from projects.models import Project, Skill
 
 
 class SkillSerializer(serializers.ModelSerializer):
+    category_display = serializers.CharField(source='get_category_display', read_only=True)
+
     class Meta:
         model = Skill
-        fields = ["id", "name", "category", "order"]
+        fields = ["id", "name", "category", "category_display", "order"]
 
 
 class ProjectSerializer(serializers.ModelSerializer):

@@ -4,6 +4,7 @@ export interface Skill {
     "id": string;
     "name": string;
     "category": string;
+    "category_display": string;
     "order": number;
 }
 
