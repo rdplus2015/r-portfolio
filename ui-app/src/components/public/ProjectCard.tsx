@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { getProjects, type Project } from "../../services/projects.ts";
 import type { Skill } from "../../services/skills.ts";
 
+const MAX_VISIBLE_SKILLS = 12;
+
 interface ProjectCardProps {
   title: string;
   slug: string;
@@ -23,8 +25,11 @@ export function ProjectCard({
   tags,
   skills,
 }: ProjectCardProps) {
+  const visibleSkills = skills.slice(0, MAX_VISIBLE_SKILLS);
+  const hasMoreSkills = skills.length > visibleSkills.length;
+
   return (
-    <Link to={`/projects/${slug}`} className="card w-full sm:w-96 bg-base-200 shadow-sm overflow-hidden hover:shadow-md hover:shadow-primary transition-shadow duration-300">
+    <Link to={`/projects/${slug}`} className="card w-full bg-base-200 shadow-sm overflow-hidden hover:shadow-md hover:shadow-primary transition-shadow duration-300">
       {frontendImage && (
         <figure className="bg-base-100 h-56">
           <img src={frontendImage} alt={title} className="w-full h-full object-cover" />
@@ -47,11 +52,16 @@ export function ProjectCard({
         <p>{description}</p>
 
         <div className="flex flex-wrap gap-2 mt-2">
-          {skills.map((skill) => (
+          {visibleSkills.map((skill) => (
             <span key={skill.id} className="badge badge-primary badge-outline">
               {skill.name}
             </span>
           ))}
+          {hasMoreSkills && (
+            <span className="badge badge-outline">
+              Voir plus...
+            </span>
+          )}
         </div>
       </div>
     </Link>
@@ -79,7 +89,7 @@ export function ProjectsList() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="flex flex-wrap gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project) => (
         <ProjectCard
           key={project.id}
