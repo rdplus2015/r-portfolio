@@ -26,7 +26,6 @@ export function ProjectCard({
   skills,
 }: ProjectCardProps) {
   const visibleSkills = skills.slice(0, MAX_VISIBLE_SKILLS);
-  const hasMoreSkills = skills.length > visibleSkills.length;
 
   return (
     <Link to={`/projects/${slug}`} className="card w-full bg-base-200 shadow-sm overflow-hidden hover:shadow-md hover:shadow-primary transition-shadow duration-300">
@@ -57,11 +56,9 @@ export function ProjectCard({
               {skill.name}
             </span>
           ))}
-          {hasMoreSkills && (
-            <span className="badge badge-outline">
-              Voir plus...
-            </span>
-          )}
+          <span className="badge badge-outline">
+            Voir plus...
+          </span>
         </div>
       </div>
     </Link>
